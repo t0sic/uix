@@ -15,7 +15,7 @@ export const state = {
         battery: 43
     },
     general: {
-        path: "contact-create",
+        path: "contacts-favorites",
         appAnimation: "",
         appAnimationDuration: 500,
         mobileData: true,
@@ -44,6 +44,7 @@ export const state = {
             { number: "074-32 323 32", id: "7" },
         ],
         contactCreate: {
+            quit: "home",
             label: "",
             number: ""
         }

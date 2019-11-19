@@ -103,8 +103,8 @@ export class ContactCreate extends Component {
         const { props } = this
         const { contactCreate, UIXSetContactCreateInput } = props
         const { value, name } = target
-
         let inputs = contactCreate
+
         inputs[name] = value
         UIXSetContactCreateInput(inputs)
         if (contactCreate.number.length) this.setState({ validated: true })
@@ -113,10 +113,10 @@ export class ContactCreate extends Component {
 
     backspace = () => {
         if (this.state.focus) return
-        const { UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetPath } = this.props
+        const { UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetPath, contactCreate } = this.props
         UIXPhoneSetAnimationDuration(300)
         UIXPhoneSetAnitmation("slide-2")
-        UIXPhoneSetPath("contacts")
+        UIXPhoneSetPath(contactCreate.quit)
     }
 
     handleEvent = ({ detail }) => {

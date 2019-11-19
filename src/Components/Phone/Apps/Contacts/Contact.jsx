@@ -83,7 +83,7 @@ export class Contact extends Component {
 
     addContact = () => {
         const { UIXSetContactCreateInput, UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetPath, contact } = this.props
-        UIXSetContactCreateInput({ label: "", number: contact.id })
+        UIXSetContactCreateInput({ label: "", number: contact.id, quit: "contact" })
         UIXPhoneSetAnimationDuration(300)
         UIXPhoneSetAnitmation("slide-1")
         UIXPhoneSetPath("contact-create")

@@ -1,4 +1,7 @@
-import { UIXPhoneSetDarkBackground, UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetPath, UIXPhoneSetContact } from "../../../../redux/actions/phoneActions";
+import { 
+    UIXPhoneSetDarkBackground, UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetPath, 
+    UIXPhoneSetContact, UIXSetContactCreateInput 
+} from "../../../../redux/actions/phoneActions";
 import { withTranslation } from "react-i18next";
 import React, { Component } from "react";
 import KeyNav from "../../Main/KeyNav";
@@ -117,7 +120,8 @@ export class Contacts extends Component {
     }
 
     addContact = () => {
-        const { UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetPath } = this.props
+        const { UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetPath, UIXSetContactCreateInput } = this.props
+        UIXSetContactCreateInput({label: "", number: "", quit: "contacts"})
         UIXPhoneSetAnimationDuration(300)
         UIXPhoneSetAnitmation("slide-1")
         UIXPhoneSetPath("contact-create")
@@ -200,6 +204,7 @@ const mapStateToProps = ({ phone }) => ({
 const mapDispatchToProps = {
     UIXPhoneSetAnimationDuration,
     UIXPhoneSetDarkBackground,
+    UIXSetContactCreateInput,
     UIXPhoneSetAnitmation,
     UIXPhoneSetContact,
     UIXPhoneSetPath

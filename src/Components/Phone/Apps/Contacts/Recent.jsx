@@ -192,7 +192,7 @@ export class Recent extends Component {
     }
 
     entered = () => {
-        const { setKeyNav, UIXPhoneSetDarkBackground, settings } = this.props
+        const { setKeyNav, UIXPhoneSetDarkBackground, settings, recent } = this.props
         const elements = Array.from(document.getElementsByClassName("contacts-recent-nav-element"))
         const navigation = new KeyNav(elements, (event, data) => this[event](data))
         const item = window.localStorage.getItem("contacts-recent")
@@ -201,7 +201,7 @@ export class Recent extends Component {
             navigation.position.vertical = JSON.parse(item)[0]
         } else {
             navigation.position.horizontal = 1
-            navigation.position.vertical = 0
+            navigation.position.vertical = recent.length
         }
         navigation.handleSelected()
         setKeyNav(navigation)

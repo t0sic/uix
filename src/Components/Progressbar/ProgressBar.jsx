@@ -29,7 +29,7 @@ class ProgressBar extends Component {
     }
 
     removeBar = (bar) => {
-        if (this.state.bar === bar) {
+        if (this.state.bar.id === bar.id) {
             clearInterval(this.state.interval)
             this.setState({ bar: null }, () => {
                 if (this.state.bars[0]) {

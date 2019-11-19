@@ -299,3 +299,16 @@
 .contacts-recent-selected div:first-child {
     color: rgb(0, 122, 255) !important;
 }
+
+/* Contact Favorites */
+
+.contact-favorite {
+    padding-left: 4%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    margin-left: 4%;
+}
+
+.contact-favorite-selected {
+    color: rgb(0, 122, 255) !important;
+}
