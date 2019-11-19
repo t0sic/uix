@@ -295,3 +295,7 @@
     font-size: 80%;
     opacity: 0.8;
 }
+
+.contacts-recent-selected div:first-child {
+    color: rgb(0, 122, 255) !important;
+}

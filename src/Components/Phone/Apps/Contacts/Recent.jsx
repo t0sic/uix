@@ -1,4 +1,4 @@
-import { UIXPhoneSetDarkBackground, UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetPath } from "../../../../redux/actions/phoneActions";
+import { UIXPhoneSetDarkBackground, UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetPath, UIXPhoneSetContact } from "../../../../redux/actions/phoneActions";
 import { withTranslation } from "react-i18next";
 import React, { Component } from "react";
 import KeyNav from "../../Main/KeyNav";
@@ -29,19 +29,19 @@ export class Recent extends Component {
                     </div>
 
                     <div className="contacts-footer" style={{ background: color_s }}>
-                        <div className="contact-footer-col contacts-recent-nav-element" data-focusfunc="openApp" data-param="contacts-favorites" data-pos={[0, 0]} data-class="contact-footer-icon-selected">
+                        <div className="contact-footer-col contacts-recent-nav-element" data-focusfunc="openApp" data-param="contacts-favorites" data-pos={[recent.length, 0]} data-class="contact-footer-icon-selected">
                             <div className="contacts-footer-icon">
                                 <i className="fas fa-star" style={{ color: color_t_i }} />
                             </div>
                             <div className="contacts-footer-label" style={{ color: color_t_i }}>{t("apps.phone.apps.contacts-footer.favorites")}</div>
                         </div>
-                        <div className="contact-footer-col contacts-recent-nav-element" data-pos={[0, 1]} data-class="contact-footer-icon-selected">
+                        <div className="contact-footer-col contacts-recent-nav-element" data-pos={[recent.length, 1]} data-class="contact-footer-icon-selected">
                             <div className="contacts-footer-icon">
                                 <i className="fas fa-clock" style={{ color: color_t_i }} />
                             </div>
                             <div className="contacts-footer-label" style={{ color: color_t_i }}>{t("apps.phone.apps.contacts-footer.recent")}</div>
                         </div>
-                        <div className="contact-footer-col contacts-recent-nav-element" data-focusfunc="openApp" data-param="contacts" data-pos={[0, 2]} data-class="contact-footer-icon-selected">
+                        <div className="contact-footer-col contacts-recent-nav-element" data-focusfunc="openApp" data-param="contacts" data-pos={[recent.length, 2]} data-class="contact-footer-icon-selected">
                             <div className="contacts-footer-icon">
                                 <i className="fas fa-user-friends" style={{ color: color_t_i }} />
                             </div>
@@ -97,6 +97,19 @@ export class Recent extends Component {
         }
     }
 
+    getContactFromNumber = (number) => {
+        const { contacts } = this.props
+        let output = null
+
+        contacts.forEach((contact) => {
+            if (contact.number === number) output = contact
+        })  
+        
+        if (!output) output = { number }
+
+        return output
+    }
+
     recent = () => {
         const { recent, settings } = this.props
         const { darkMode } = settings
@@ -105,16 +118,41 @@ export class Recent extends Component {
         let output = []
 
         recent.forEach((caller, i) => {
+            const { number, time, missed } = caller
+            const contact = this.getContactFromNumber(number)
+            const label = contact.label ? contact.label : contact.number
+
             output.push(
-                <div key={i} style={{ color: color_t, borderBottom: "1px solid " + color_b }} className="contacts-recent-call">
-                    <div className="contacts-recent-call-label">Jonathan Book</div>
-                    <div className="contacts-recent-call-time">{this.getCallTime(new Date("2019-11-18"))}</div>
+                <div 
+                    key={i} 
+                    style={{ color: color_t, borderBottom: "1px solid " + color_b }} 
+                    data-pos={[i, 1]} 
+                    data-enterfunc="openContact"
+                    data-enterdata={contact.id ? contact.id : number}
+                    className="contacts-recent-call contacts-recent-nav-element"
+                    data-class="contacts-recent-selected"
+                >
+                    <div className="contacts-recent-call-label" style={{color: missed ? "#fc3d39": ""}}>{label}</div>
+                    <div className="contacts-recent-call-time">{this.getCallTime(time)}</div>
                 </div>
             )
         })
 
 
         return output
+    }
+
+    openContact = (data) => {
+        const {
+            UIXPhoneSetContact,
+            UIXPhoneSetAnitmation,
+            UIXPhoneSetAnimationDuration,
+            UIXPhoneSetPath
+        } = this.props
+        UIXPhoneSetAnimationDuration(300)
+        UIXPhoneSetAnitmation("slide-1")
+        UIXPhoneSetContact({ id: data, quit: "contacts-recent" })
+        UIXPhoneSetPath("contact")
     }
 
     openApp = (app) => {
@@ -182,6 +220,7 @@ const mapDispatchToProps = {
     UIXPhoneSetAnimationDuration,
     UIXPhoneSetDarkBackground,
     UIXPhoneSetAnitmation,
+    UIXPhoneSetContact,
     UIXPhoneSetPath
 }
 

@@ -1,6 +1,6 @@
 import {
     UIXPhoneSetDarkBackground, UIXPhoneSetAnimationDuration, UIXPhoneSetAnitmation, UIXPhoneSetPath,
-    UIXPhoneUpdateContacts
+    UIXPhoneUpdateContacts, UIXSetContactCreateInput
 } from "../../../../redux/actions/phoneActions";
 import { withTranslation } from "react-i18next";
 import React, { Component } from "react";
@@ -11,13 +11,13 @@ import "./contacts.css";
 
 export class ContactCreate extends Component {
 
-    state = { focus: false, validated: false, inputs: { label: "", number: "" } }
+    state = { focus: false, validated: false }
 
     render() {
 
-        const { inputs, validated } = this.state
-        const { label, number } = inputs
-        const { settings, t } = this.props
+        const { validated } = this.state
+        const { settings, t, contactCreate } = this.props
+        const { label, number } = contactCreate
         const { darkMode } = settings
         const color_p = darkMode ? "rgb(28, 28, 30)" : "rgb(242, 242, 247)"
         const color_s = darkMode ? "rgb(44, 44, 46)" : "rgb(229, 229, 234)"
@@ -87,9 +87,9 @@ export class ContactCreate extends Component {
 
     createContact = () => {
         const { state, props, backspace } = this
-        const { validated, inputs } = state
-        const { UIXPhoneUpdateContacts } = props
-        const { label, number } = inputs
+        const { validated } = state
+        const { UIXPhoneUpdateContacts, contactCreate } = props
+        const { label, number } = contactCreate
         if (!validated) return
         let contact = { number, id: uuid() }
         if (label) contact.label = label
@@ -100,15 +100,15 @@ export class ContactCreate extends Component {
     }
 
     handleInput = ({ target }) => {
-        const { state } = this
-        const { name, value } = target
+        const { props } = this
+        const { contactCreate, UIXSetContactCreateInput } = props
+        const { value, name } = target
 
-        let inputs = state.inputs
+        let inputs = contactCreate
         inputs[name] = value
-        this.setState({ inputs }, () => {
-            if (state.inputs.number.length) this.setState({ validated: true })
-            if (!state.inputs.number.length) this.setState({ validated: false })
-        })
+        UIXSetContactCreateInput(inputs)
+        if (contactCreate.number.length) this.setState({ validated: true })
+        if (!contactCreate.number.length) this.setState({ validated: false })
     }
 
     backspace = () => {
@@ -146,12 +146,14 @@ export class ContactCreate extends Component {
 
 const mapStateToProps = ({ phone }) => ({
     settings: phone.settings,
-    contacts: phone.apps.contacts
+    contacts: phone.apps.contacts,
+    contactCreate: phone.apps.contactCreate
 })
 
 const mapDispatchToProps = {
     UIXPhoneSetAnimationDuration,
     UIXPhoneSetDarkBackground,
+    UIXSetContactCreateInput,
     UIXPhoneUpdateContacts,
     UIXPhoneSetAnitmation,
     UIXPhoneSetPath

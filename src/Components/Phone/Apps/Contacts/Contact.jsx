@@ -1,6 +1,6 @@
 import {
     UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetPath, UIXPhoneSetDarkBackground,
-    UIXPhoneUpdateContacts
+    UIXPhoneUpdateContacts, UIXSetContactCreateInput
 } from "../../../../redux/actions/phoneActions";
 import { withTranslation } from "react-i18next";
 import React, { Component } from "react";
@@ -13,8 +13,8 @@ export class Contact extends Component {
 
         const { settings, t } = this.props
         let contact = this.contact()
-        if (!contact) contact = { label: "Karim Tonfisk", number: "", favorite: false }
-        const { label, number, favorite } = contact
+        if (!contact) contact = { label: "Karim Tonfisk", number: "0", favorite: false }
+        const { label, number, favorite, isNotContact } = contact
         const { darkMode } = settings
         const color_t = darkMode ? "white" : "black"
         const color_s = darkMode ? "rgb(44, 44, 46)" : "rgb(229, 229, 234)"
@@ -35,26 +35,26 @@ export class Contact extends Component {
                         </div>
                         <div className="contact-label" style={{ color: color_t }}>{label ? label : number}</div>
                         <div className="contact-actions">
-                            <div data-pos={[0, 0]} data-func="message" data-class="contact-action-selected"><i className="fas fa-comment" /></div>
-                            <div data-pos={[0, 1]} data-func="call" data-class="contact-action-selected"><i className="fas fa-phone" /></div>
-                            <div data-pos={[0, 2]} data-func="favorite" data-class="contact-action-selected"><i className="fas fa-star" /></div>
-                            <div data-pos={[0, 3]} data-func="delete" data-class="contact-action-selected"><i className="fas fa-trash" /></div>
+                            <div className="contact-nav-element" data-pos={[0, 0]} data-func="message" data-class="contact-action-selected"><i className="fas fa-comment" /></div>
+                            <div className="contact-nav-element" data-pos={[0, 1]} data-func="call" data-class="contact-action-selected"><i className="fas fa-phone" /></div>
+                            <div className="contact-nav-element" data-pos={[0, 2]} style={{opacity: isNotContact ? "0.5" : "1"}} data-func="favorite" data-class="contact-action-selected"><i className="fas fa-star" /></div>
+                            <div className="contact-nav-element" data-pos={[0, 3]} style={{opacity: isNotContact ? "0.5" : "1"}} data-func="delete" data-class="contact-action-selected"><i className="fas fa-trash" /></div>
                         </div>
 
                     </div>
 
                     <div className="contact-middle" style={{ background: color_p }}>
 
-                        <div className="contact-info" data-pos={[1, 0]} data-class="contact-info-selected" style={{ color: color_t }}>
+                        <div className="contact-info contact-nav-element" data-pos={[1, 0]} data-class="contact-info-selected" style={{ color: color_t }}>
                             <label>{t("apps.phone.apps.contact.iPhone")}</label>
                             <div>{number}</div>
                         </div>
                         {label ?
-                            <div className="contact-info" data-pos={[2, 0]} data-class="contact-info-selected" style={{ color: color_t }}>
+                            <div className="contact-info contact-nav-element" data-pos={[2, 0]} data-class="contact-info-selected" style={{ color: color_t }}>
                                 <label>{t("apps.phone.apps.contact.name")}</label>
                                 <div>{label}</div>
                             </div> : null}
-                        <div className="contact-info" data-pos={[3 - factor, 0]} data-class="contact-info-selected" style={{ color: color_t }}>
+                        <div className="contact-info contact-nav-element" data-pos={[3 - factor, 0]} data-class="contact-info-selected" style={{ color: color_t }}>
                             <label>{t("apps.phone.apps.contact.favorite")}</label>
                             <div>{favorite ?
                                 <span>{t("apps.phone.apps.contact.is-favorite-label")}</span> :
@@ -62,18 +62,31 @@ export class Contact extends Component {
                             }</div>
                         </div>
 
-                        <div className="contact-info" data-func="message" data-pos={[4 - factor, 0]} data-class="contact-info-selected" style={{ color: color_t, marginTop: "4%" }}>
+                        <div className="contact-info contact-nav-element" data-func="message" data-pos={[4 - factor, 0]} data-class="contact-info-selected" style={{ color: color_t, marginTop: "4%" }}>
                             <div>{t("apps.phone.apps.contact.send-message")}</div>
                         </div>
-                        <div className="contact-info" data-func="shareLocation" data-pos={[5 - factor, 0]} data-class="contact-info-selected" style={{ color: color_t, marginTop: "4%" }}>
+                        <div className="contact-info contact-nav-element" data-func="shareLocation" data-pos={[5 - factor, 0]} data-class="contact-info-selected" style={{ color: color_t, marginTop: "4%" }}>
                             <div>{t("apps.phone.apps.contact.share-my-location")}</div>
                         </div>
+                        { isNotContact ? 
+                            <div className="contact-info contact-nav-element" data-func="addContact" data-pos={[6 - factor, 0]} data-class="contact-info-selected" style={{ color: color_t, marginTop: "4%" }}>
+                                <div>{t("apps.phone.apps.contact.add-contact")}</div>
+                            </div> : null 
+                        }
 
                     </div>
 
                 </div>
             </div>
         )
+    }
+
+    addContact = () => {
+        const { UIXSetContactCreateInput, UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetPath, contact } = this.props
+        UIXSetContactCreateInput({ label: "", number: contact.id })
+        UIXPhoneSetAnimationDuration(300)
+        UIXPhoneSetAnitmation("slide-1")
+        UIXPhoneSetPath("contact-create")
     }
 
     contact = () => {
@@ -83,6 +96,8 @@ export class Contact extends Component {
         contacts.forEach((elem) => {
             if (contact.id === elem.id) output = elem
         })
+
+        if (!output) output = { number: contact.id, isNotContact: true }
 
         return output
     }
@@ -128,13 +143,10 @@ export class Contact extends Component {
     entered = () => {
         const { setKeyNav, UIXPhoneSetDarkBackground, settings } = this.props
         const { darkMode } = settings
-        const elements = [
-            ...Array.from(document.getElementsByClassName("contact-actions")[0].childNodes),
-            ...Array.from(document.getElementsByClassName("contact-middle")[0].childNodes)
-        ]
+        const elements = Array.from(document.getElementsByClassName("contact-nav-element"))
         const navigation = new KeyNav(elements, (event, data) => this[event](data))
         const item = window.localStorage.getItem("contact")
-        if (item) {
+        if (item && navigation.isPosition(JSON.parse(item))) {
             navigation.position.horizontal = JSON.parse(item)[1]
             navigation.position.vertical = JSON.parse(item)[0]
         }
@@ -155,6 +167,7 @@ const mapStateToProps = ({ phone }) => ({
 const mapDispatchToProps = {
     UIXPhoneSetAnimationDuration,
     UIXPhoneSetDarkBackground,
+    UIXSetContactCreateInput,
     UIXPhoneUpdateContacts,
     UIXPhoneSetAnitmation,
     UIXPhoneSetPath

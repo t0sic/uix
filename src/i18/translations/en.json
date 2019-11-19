@@ -83,7 +83,8 @@
                     "send-message": "Send Message",
                     "share-my-location": "Share My Location",
                     "is-favorite-label": "Yes",
-                    "is-not-favorite-label": "No"
+                    "is-not-favorite-label": "No",
+                    "add-contact": "Add Contact"
                 },
                 "contacts-footer": {
                     "contacts": "Contacts",

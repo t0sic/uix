@@ -15,7 +15,7 @@ export const state = {
         battery: 43
     },
     general: {
-        path: "contacts-recent",
+        path: "contact-create",
         appAnimation: "",
         appAnimationDuration: 500,
         mobileData: true,
@@ -26,21 +26,26 @@ export const state = {
     },
     apps: {
         contact: {
-            id: 4,
+            id: "4",
             quit: "home"
         },
         recent: [
-            { number: "074-32 323 32", time: new Date() }
+            { number: "074-32 323 32", time: new Date(), missed: true },
+            { number: "074-32 323 32", time: new Date() },
+            { number: "074-32 323 98", time: new Date() },
         ],
         contacts: [
-            { number: "074-32 323 32", id: 1 },
-            { label: "Sbdi Aventador", number: "074-32 323 32", favorite: true, id: 0 },
-            { label: "Sbdi Aventador", number: "074-32 323 32", id: 3 },
-            { label: "Xbdi Aventador", number: "074-32 323 32", id: 4 },
-            { label: "Vbdi Aventador", number: "074-32 323 32", id: 5 },
-            { label: "Sbdi Aventador", number: "074-32 323 32", id: 6 },
-            { label: "Sbdi Aventador", number: "074-32 323 32", id: 7 },
-            { number: "074-32 323 32", id: 9 },
-        ]
+            { number: "074-32 323 32", id: "1" },
+            { number: "074-32 323 32", favorite: true, id: "0" },
+            { label: "Sbdi Aventador", number: "074-32 323 32", id: "3" },
+            { label: "Xbdi Aventador", number: "074-32 323 32", id: "4" },
+            { label: "Vbdi Aventador", number: "074-32 323 32", id: "5" },
+            { label: "Sbdi Aventador", number: "074-32 323 32", id: "6" },
+            { number: "074-32 323 32", id: "7" },
+        ],
+        contactCreate: {
+            label: "",
+            number: ""
+        }
     }
 }
