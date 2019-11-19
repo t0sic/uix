@@ -1,0 +1,30 @@
+.comfirm-dialog-enter {
+    position: absolute;
+    transform: scale(0);
+}
+
+.comfirm-dialog-enter-active {
+    position: absolute;
+    transform: scale(1);
+    transition: 300ms;
+}
+
+.comfirm-dialog-enter-done {
+    position: absolute;
+    transform: scale(1);
+}
+
+
+.comfirm-dialog-exit {
+    position: absolute;
+    transform: scale(1);
+}
+.comfirm-dialog-exit-active {
+    position: absolute;
+    transform: scale(0);
+    transition: 300ms;
+}
+.comfirm-dialog-exit-done {
+    position: absolute;
+    transform: scale(0);
+}

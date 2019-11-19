@@ -1,0 +1,168 @@
+{
+    "basic": {
+        "days": {
+            "yesterday": "Yesterday",
+            "monday": "Monday",
+            "tuesday": "Tuesday",
+            "wednesday": "Wednesday",
+            "thursday": "Thursday",
+            "friday": "Friday",
+            "saturday": "Saturday",
+            "sunday": "Sunday"
+        }
+    },
+    "apps": {
+        "inventory": {
+            "giveBtn": "Give",
+            "useBtn": "Use",
+            "inputPlaceholder": "Amount"
+        },
+        "phone": {
+            "statusbar": {
+                "service-provider": "Comviq",
+                "service": "4G"
+            },
+            "apps": {
+                "home": {
+                    "settings-label": "Settings",
+                    "contacts-label": "Contacts",
+                    "messages-label": "Messages",
+                    "camera-label": "Camera",
+                    "twitter-label": "Twitter",
+                    "bank-label": "Bank"
+                },
+                "settings": {
+                    "label": "Settings",
+                    "airplane-mode-label": "Airplane Mode",
+                    "wifi-label": "Wi-Fi",
+                    "mobile-data-label": "Mobile Data",
+                    "dark-mode-label": "Dark Mode",
+                    "disturbe-mode-label": "Do Not Disturbe",
+                    "phone-label": "Phone",
+                    "themes-label": "Themes",
+                    "backgrounds-label": "Backgrounds"
+                },
+                "settings-background": {
+                    "label": "Background",
+                    "add-background-option": "+ Add background",
+                    "glitched": "Glitched",
+                    "dark-sky": "Dark Sky",
+                    "dark-lake": "Dark Lake",
+                    "glitchy-neon": "Glitchy Neon",
+                    "watchtower": "Watchtower",
+                    "winter": "Winter",
+                    "react": "React",
+                    "rose": "Rose"
+                },
+                "settings-background-add": {
+                    "label": "Add Background",
+                    "input-url": "A url pointing to the image",
+                    "input-label": "Label",
+                    "btn-label": "Add Background"
+                },
+                "settings-call": {
+                    "label": "Phone",
+                    "change-ringtone": "Change Ringtone",
+                    "show-number": "Show my number"
+                },
+                "settings-ring-tone": {
+                    "label": "Ringtones"
+                },
+                "settings-themes": {
+                    "label": "Themes",
+                    "default-label": "Default",
+                    "gray-label": "Gray Gradient"
+                },
+                "contacts": {
+                    "label": "Kontakter"
+                },
+                "contact": {
+                    "iPhone": "iPhone",
+                    "name": "Name",
+                    "favorite": "Favorite",
+                    "send-message": "Send Message",
+                    "share-my-location": "Share My Location",
+                    "is-favorite-label": "Yes",
+                    "is-not-favorite-label": "No"
+                },
+                "contacts-footer": {
+                    "contacts": "Contacts",
+                    "keypad": "Keypad",
+                    "favorites": "Favorites",
+                    "recent": "Recent"
+                },
+                "contact-create": {
+                    "label": "New Contact",
+                    "input-label-placeholder": "Label",
+                    "input-number-placeholder": "Number",
+                    "btn-label": "Add Contact"
+                },
+                "contacts-recent": {
+                    "label": "Recent"
+                },
+                "contacts-favorites": {
+                    "label": "Favorites"
+                }
+            }
+        },
+        "character-selector": {
+            "id": "Birthdate",
+            "jobb": "Job",
+            "number": "Phonenumber",
+            "cash": "Cash",
+            "bank": "Bank",
+            "play": "Play",
+            "remove": "Remove",
+            "empty": {
+                "header": "Create Character",
+                "btn": "Create Character"
+            },
+            "position": {
+                "return": "back",
+                "choose-position": "Choose Position",
+                "play": "Play"
+            },
+            "create": {
+                "create-character": "Create Character",
+                "firstname": "Firstname",
+                "lastname": "Lastname",
+                "birthdate": "Birthdate",
+                "length": "Length",
+                "gender": "Gender",
+                "create-btn": "Create Character",
+                "back": "Back"
+            }
+        },
+        "bank": {
+            "welcome": "Welcome Back",
+            "navbar": {
+                "dashboard": "Dashboard",
+                "accounts": "Accounts",
+                "send-money": "Send Money",
+                "transactions": "Transactions"
+            },
+            "bank-account-boxes": {
+                "accounts": {
+                    "label": "Accounts",
+                    "account-holder": "Account Holder",
+                    "your-balance": "Your Balance",
+                    "account-number": "Account Number",
+                    "credit-cards": "Credit Cards"
+                },
+                "calendar": {
+                    "label": "Calendar"
+                },
+                "exchange-rates": {
+                    "label": "Exchange Rates",
+                    "maintance": "Under Maintance"
+                },
+                "balance-statement": {
+                    "label": "Balance Statement"
+                },
+                "recent-transactions": {
+                    "label": "Recent Transactions"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,338 @@
+.settings {
+    height: 100%;
+    width: 100%;
+    transition: 400ms all ease-in-out;
+}
+
+.settings-top {
+    height: 12%;
+    transition: 400ms all ease-in-out;
+    height: 12%;
+    width: 100%;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.212);
+}
+
+.settings-quit {
+    margin-top: 9.7%;
+    margin-left: 3%;
+    position: absolute;
+    font-size: 90%;
+}
+
+.settings-label {
+    margin-top: 9%;
+    text-align: center;
+    font-size: 90%;
+}
+
+.settings-quit-selected i {
+    color: rgb(0, 122, 255) !important;
+}
+
+.settings-middle {
+    height: 88%;
+    overflow: hidden;
+}
+
+.settings-middle-s1 {
+    margin-top: 10%;
+    border-top: 1px solid rgba(128, 128, 128, 0.123);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.123);
+}
+
+.settings-middle-s2 {
+    margin-top: 86%;
+    border-top: 1px solid rgba(128, 128, 128, 0.123);
+    border-bottom: 1px solid rgba(128, 128, 128, 0.123);
+}
+
+.settings-option {
+    width: 100%;
+    height: 2em;
+    float: left;
+    transition: 400ms all ease-in-out;
+}
+
+.settings-option-icon {
+    float: left;
+    height: 100%;
+    width: 15%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    transform: scale(0.9);
+}
+
+.settings-option-icon div {
+    width: 70%;
+    height: 70%;
+    border-radius: 4px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 70%;
+}
+
+.settings-option-label {
+    align-items: center;
+    display: flex;
+    float: left;
+    height: 100%;
+    font-size: 80%;
+    margin-left: 2%;
+}
+
+.settings-option-action {
+    float: right;
+    width: 20%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.settings-option-action i {
+    font-size: 80%;
+}
+
+.settings-option-selected > .settings-option-label {
+    color: rgb(0, 122, 255) !important;
+}
+
+.settings-background-option-selected {
+    color: rgb(0, 122, 255) !important;
+}
+
+.settings-theme-option-selected {
+    color: rgb(0, 122, 255) !important;
+}
+
+.settings-call-option-selected {
+    color: rgb(0, 122, 255) !important;
+}
+
+.settings-middle-ringtone-selected .settings-ringtone-label {
+    color: rgb(0, 122, 255) !important;
+}
+
+.settings-middle-ringtone-btn-selected {
+    background: rgb(0, 122, 255) !important;
+}
+
+.settings-background-option-current-selected {
+    outline: 1px solid rgb(0, 122, 255) !important;
+}
+
+.settings-theme-option-current-selected {
+    outline: 1px solid rgb(0, 122, 255) !important;
+}
+
+.settings-middle-ringtone-current {
+    outline: 1px solid rgb(0, 122, 255) !important;
+}
+
+.settings-middle-backgrounds {
+    height: 100%;
+    margin: 5%;
+    float: left;
+    width: 90%;
+}
+
+.settings-background-option {
+    padding: 6%;
+    font-size: 90%;
+    margin-bottom: 1%;
+}
+
+.settings-middle-themes {
+    height: 100%;
+    margin: 5%;
+    float: left;
+    width: 90%;
+}
+
+.settings-theme-option {
+    padding: 6%;
+    font-size: 90%;
+    margin-bottom: 1%;
+}
+
+.settings-middle-call {
+    height: 100%;
+    margin: 5%;
+    float: left;
+    width: 90%;
+}
+
+.settings-call-option {
+    padding: 6%;
+    font-size: 90%;
+    margin-bottom: 1%;
+}
+
+.settings-call-option-label {
+    float: left;
+}
+
+.settings-call-option-switch {
+    float: right;
+    margin-top: -2%;
+    margin-right: -6%;
+}
+
+.settings-middle-ringtones {
+    height: 100%;
+    margin: 5%;
+    float: left;
+    width: 90%;
+}
+
+.settings-middle-ringtone {
+    padding: 6%;
+    width: 100%;
+    height: 43px;
+    font-size: 90%;
+    margin-bottom: 1%;
+    float: left;
+}
+
+.settings-ringtone-label {
+    float: left;
+}
+
+.settings-ringtone-btn {
+    float: right;
+    height: 100%;
+    width: 5%;
+    margin-right: 5%;
+    margin-top: -1%;
+}
+
+.settings-ringtone-btn div {
+    border-radius: 50%;
+    background: rgb(255, 159, 0);
+    width: 20px;
+    height: 20px;
+    padding: 11px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.settings-ringtone-btn div i {
+    font-size: 65%;
+}
+
+.settings-middle-add-bg-input-container {
+    height: 50%;
+    margin: 10%;
+}
+
+.settings-middle-add-bg-input-container input {
+    padding: 5px;
+    width: 100%;
+    margin-top: 2%;
+    margin-bottom: 5%;
+    border: 2px solid rgba(0, 0, 0, 0) !important;
+}
+
+.settings-middle-add-bg-input-container input:focus {
+    outline: none;
+    border: 2px solid rgb(0, 122, 255) !important;
+}
+
+.settings-middle-add-bg-input-container label {
+    font-size: 70%;
+    width: 100%;
+}
+
+.settings-middle-add-bg-button-container {
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.settings-middle-add-bg-button-container div {
+    background: rgb(0, 122, 255);
+    padding: 8px;
+    width: 80%;
+    text-align: center;
+    border-radius: 6px;
+    font-size: 90%;
+    transition: 400ms ease-in-out;
+}
+
+.settings-middle-add-bg-button-selected {
+    transform: scale(1.05);
+}
+
+
+
+
+
+.form-switch {
+    display: inline-block;
+    cursor: pointer;
+    transform: scale(0.7);
+    -webkit-tap-highlight-color: transparent;
+}
+  
+.form-switch i {
+    position: relative;
+    display: inline-block;
+    margin-right: .5rem;
+    width: 46px;
+    height: 26px;
+    border-radius: 23px;
+    vertical-align: text-bottom;
+    transition: all 0.3s linear;
+}
+
+.form-switch-i-dark {
+      background-color: rgb(28, 28, 30);
+}
+
+.form-switch-i-light {
+    background-color: rgb(242, 242, 247);
+}
+  
+.form-switch i::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 42px;
+    height: 22px;
+    border-radius: 11px;
+    transform: translate3d(2px, 2px, 0) scale3d(1, 1, 1);
+    transition: all 0.25s linear;
+}
+  
+.form-switch i::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 22px;
+    height: 22px;
+    background-color: #fff;
+    border-radius: 11px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.24);
+    transform: translate3d(2px, 2px, 0);
+    transition: all 0.2s ease-in-out;
+}
+  
+.form-switch:active i::after {
+    width: 28px;
+    transform: translate3d(2px, 2px, 0);
+}
+  
+.form-switch:active input:checked + i::after { transform: translate3d(16px, 2px, 0); }
+  
+.form-switch input { display: none; }
+  
+.form-switch input:checked + i { background-color: rgb(255, 159, 10); }
+  
+.form-switch input:checked + i::before { transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0); }
+  
+.form-switch input:checked + i::after { transform: translate3d(22px, 2px, 0); }

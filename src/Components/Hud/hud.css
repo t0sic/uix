@@ -1,0 +1,63 @@
+.hud {
+    font-family: 'Fira Mono', monospace;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.hud-bar {
+    width: 19%;
+    margin-top: 50%;
+    margin-left: 84%;
+    height: 4%;
+}
+
+.hud-time {
+    background: black;
+    float: left;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 14px;
+    clip-path: polygon(50% 0%, 100% 0, 100% 100%, 16% 100%, 0 79%, 0 0);
+    position: relative;
+    margin-right: 1%;
+}
+
+.hud-weapon {
+    background: black;
+    clip-path: polygon(94% 0, 100% 29%, 100% 100%, 0 100%, 0 0);
+    float: left;
+    height: 100%;
+    padding: 0px 5px;
+    width: 39%;
+    margin-right: 1%;
+}
+
+.hud-wp-image {
+    width: 50%;
+    height: 90%;
+    overflow: hidden;
+    float: left;
+    transform: scale(0.5);
+}
+
+.hud-wp-ammo {
+    width: 50%;
+    height: 100%;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hud-wp-ammo span:last-child {
+    opacity: 0.5;
+}
+
+.hud-weapon_pistol {
+    background: url("https://www.sccpre.cat/mypng/full/355-3556912_preview-white-gun-logo-transparent.png") no-repeat;
+    background-size: cover;
+    background-position: center;
+}

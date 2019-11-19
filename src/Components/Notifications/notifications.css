@@ -1,0 +1,12 @@
+.notifications {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+.uix-notification {
+    background: rgba(0, 0, 0, 0.671);
+    font-family: 'Rubik';
+    padding: 20px;
+}

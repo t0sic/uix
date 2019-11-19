@@ -1,0 +1,101 @@
+.status-bar {
+    width: 100%;
+    position: absolute;
+    height: 3.2%;
+    z-index: 2;
+}
+
+.status-bar-middle {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.status-bar-time {
+    font-size: 60%;
+    margin-top: 5px;
+}
+
+.status-bar-right {
+    float: right;
+    height: 100%;
+    width: 50%;
+}
+
+.status-bar-left {
+    float: left;
+    height: 100%;
+    width: 50%;
+}
+
+.status-bar-planemode {
+    font-size: 55%;
+    margin-top: 3px;
+    margin-left: 2%;
+    float: left;
+}
+
+.status-bar-service-connection {
+    background: url(https://cdn.discordapp.com/attachments/551275652855103510/567001987640459277/bars.png) no-repeat;
+    background-size: 100%;
+    height: 100%;
+    width: 10%;
+    margin-left: 1.5%;
+    margin-top: 4px;
+    float: left;
+}
+
+.status-bar-service {
+    font-size: 60%;
+    margin-top: 3px;
+    margin-left: 2%;
+    float: left;
+}
+
+.status-bar-wifi {
+    font-size: 50%;
+    margin-top: 3px;
+    float: left;
+    margin-left: 3%;
+}
+
+.status-bar-4g {
+    font-size: 60%;
+    margin-top: 3px;
+    margin-left: 3%;
+    float: left;
+}
+
+.status-bar-right div {
+    float: right;
+}
+
+.status-bar-battery-percent {
+    font-size: 60%;
+    margin-top: 2px;
+    margin-right: 3%;
+}
+
+.status-bar-battery-bar {
+    width: 16px;
+    height: 65%;
+    margin-top: 3px;
+    margin-right: 3%;
+}
+
+.status-bar-battery-bar-filler {
+    height: 70%;
+    width: 93%;
+    float: left !important;
+    margin: 5%;
+}
+
+.status-bar-battery-bar-filler div {
+    height: 100%;
+    width: 43%;
+    margin-top: 2%;
+    float: left !important;
+}

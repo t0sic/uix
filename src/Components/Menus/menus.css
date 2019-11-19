@@ -1,0 +1,87 @@
+.menus {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    font-family: 'Borda Regular 12';
+}
+
+.menu {
+    position: absolute;
+    margin-left: 65%;
+    margin-top: 26%;
+    min-width: 380px;
+    height: 420px;
+}
+
+.menu-head {
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.473);
+    font-size: 190%;
+    padding-top: 2%
+}
+
+.menu-elements {
+    width: 100%;
+    max-height: 350px;
+    overflow: hidden;
+}
+
+.menu-element {
+    border: 0.1px solid rgba(255, 255, 255, 0.26);
+    background: rgba(0, 0, 0, 0.459);
+    margin-bottom: 1%;
+    width: 100%;
+    height: 47px;
+}
+
+.menu-element-selected {
+    background: rgb(89,142,149) !important;
+    background: linear-gradient(90deg, rgba(89,142,149,1) 0%, rgba(42,148,165,0.9) 72%) !important;
+    clip-path: polygon(96% 0, 100% 16%, 100% 100%, 3% 100%, 0 81%, 0 0) !important;
+    transition: 400ms ease-in-out !important;
+}
+
+.menu-element-disabled {
+    opacity: 0.4;
+    background: rgba(0, 0, 0, 0.842);
+}
+
+
+.menu-element-text {
+    font-size: 120%;
+    margin: 10px;
+    float: left;
+}
+
+.menu-element-text p {
+    float: left;
+}
+
+.menu-element-text span:nth-child(2) {
+    font-family: 'Fira Mono', monospace;
+    font-size: 90%;
+}
+
+.menu-element-checkbox {
+    height: 100%;
+    float: right;
+    width: 9%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-element-checkbox-box {
+    height: 20px;
+    width: 20px;
+    transform: scale(0.9);
+    position: relative;
+    border: 1px solid gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-element-checkbox-box .fas.fa-check {
+    transform: scale(0.7);
+}

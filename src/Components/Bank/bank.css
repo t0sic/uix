@@ -1,0 +1,428 @@
+.bank-overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    --bank-main-color: rgb(26, 32, 48);
+    --bank-main-color-dark: rgb(19, 23, 34);
+    --bank-main-color-light: rgb(46, 54, 75);
+    --bank-secondary-color: rgb(206, 51, 100);
+    --bank-teritary-color: rgb(120, 31, 188);
+    font-family: 'Rubik';
+}
+
+.bank-background {
+    background: rgba(37, 37, 37, 0.397);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    backdrop-filter: blur(8px);
+}
+
+.bank-main {
+    width: 80%;
+    height: 80%;
+    background: var(--bank-main-color);
+    border-radius: 7px;
+    z-index: 2;
+    box-shadow: 10px 13px 17px 6px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+.bank-navbar {
+    width: 100%;
+    float: left;
+    height: 8%;
+    background: var(--bank-main-color-dark);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.bank-name {
+    float: left;
+    margin: 2%;
+    font-size: 110%;
+    font-weight: bold;
+    text-shadow: none;
+    background:  linear-gradient(to bottom right, var(--bank-secondary-color), var(--bank-teritary-color));
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.bank-paths {
+    width: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: -2%;
+    margin-top: 0.1%;
+}
+
+.bank-path {
+    float: left;
+    margin: 4%;
+    font-size: 90%;
+}
+
+.bank-body {
+    height: 80%;
+    margin: 7.5% 4%;
+}
+
+.bank-welcoming-text {
+    color: rgba(255, 255, 255, 0.397);
+    font-size: 150%;
+}
+
+.bank-welcoming-text span {
+    color: var(--bank-secondary-color);
+    font-weight: bold;
+}
+
+.bank-data {
+    height: 93%;
+    margin-top: 2%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: "a a c f" "e e d f";
+    grid-column-gap: 2%;
+    grid-row-gap: 4%;
+}
+
+.bank-account-box {
+    background: var(--bank-main-color-light);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.d { grid-area: d; }
+
+.c { grid-area: c; }
+
+.f { grid-area: f; }
+
+.a { grid-area: a; }
+
+.e { grid-area: e; }
+
+.bank-account-box-top {
+    background: var(--bank-main-color-dark);
+    padding: 18px;
+    text-transform: uppercase;
+    font-size: 90%;
+    letter-spacing: 0.2px;
+}
+
+.bank-account-box-middle {
+    height: 100%;
+}
+
+.bank-account-box-middle-left {
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+
+.bank-account-box-account-middle-label {
+    margin-left: 10%;
+    margin-top: 8%;
+    opacity: 0.5;
+    font-size: 90%;
+    width: 50%;
+    float: left;
+}
+
+.bank-account-box-account-middle-data {
+    margin-left: 10%;
+    margin-top: 1.5%;
+    width: 100%;
+    float: left;
+}
+
+.bank-account-box-middle-right {
+    float: left;
+    width: 50%;
+    height: 100%;
+}
+
+.bank-account-box-account-card-dropdown {
+    float: left;
+    width: 65%;
+    margin-top: 6%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.bank-account-box-account-card-dropdown select {
+    width: 80%;
+    margin: 0;
+    background: var(--bank-main-color-dark);
+    color: rgba(255, 255, 255, 0.562);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    z-index: 98;
+    padding: 3%;
+    border-radius: 20px;
+    font-size: 70%;
+    text-align: center;
+    position: relative;
+    border: none;
+    -webkit-appearance: none;
+}
+
+.bank-account-box-account-card-dropdown select:focus {
+    outline: none;
+}
+
+.bank-account-box-account-card-dropdown:after{
+    width: 0; 
+    height: 0; 
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid var(--bank-secondary-color);
+    position: absolute;
+    top: 40%;
+    right: 13%;
+    content: "";
+    z-index: 99;
+}
+
+.bank-account-box-account-card-dropdown option {
+    text-align: center;
+    margin: 2%;
+    outline: none;
+    border: none;
+}
+
+.bank-account-credit-card {
+    background-image: linear-gradient(to top left, var(--bank-teritary-color),  var(--bank-secondary-color));
+    width: 78%;
+    height: 50%;
+    float: left;
+    margin-left: 3%;
+    margin-top: 5%;
+    border-radius: 9px;
+}
+
+.bank-accound-credit-card-inner {
+    padding: 4%;
+}
+
+.bank-account-credit-card-bank-name {
+    font-size: 90%;
+    font-weight: bold;
+    letter-spacing: 0.4px;
+    float: left;
+}
+
+.bank-account-creidt-card-bank-date {
+    float: right;
+    font-size: 80%;
+    margin-top: 0.8%;
+}
+
+.bank-account-credit-card-bank-balance {
+    float: left;
+    width: 100%;
+    font-size: 130%;
+    margin-top: 4%;
+}
+
+.bank-account-credit-card-card-holder-name {
+    font-size: 72%;
+    width: 100%;
+    float: left;
+    margin-top: 15%;
+}
+
+.bank-account-credit-card-number {
+    margin-top: 2%;
+    float: left;
+    letter-spacing: 0.3px;
+}
+
+.bank-balance-statement-main {
+    height: 100%;
+}
+
+.bank-balance-statement-inner {
+    padding: 2% 4%;
+    height: 100%;
+    width: 100%;
+}
+
+.bank-balance-statement-money {
+    float: left;
+    height: 70%;
+    max-width: 0%;
+}
+
+.bank-balance-statement-money div {
+    font-size: 85%;
+    line-height: 2.2;
+    color: rgba(255, 255, 255, 0.644);
+}
+
+.bank-balance-statement-pillars {
+    width: 90%;
+    height: 69%;
+    margin-left: 10%;
+    margin-top: 1%;
+    float: left;
+}
+
+.bank-balance-statement-pillar {
+    float: left;
+    height: 100%;
+    margin-right: 4%;
+}
+
+.bank-pillar {
+    height: 90%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.bank-pillar div {
+    background-image: linear-gradient(to bottom, var(--bank-secondary-color), var(--bank-teritary-color));
+    width: 36%;
+    position: absolute;
+    bottom: 3%;
+    border-radius: 10px;
+    transition: all 400ms;
+}
+
+.bank-pillar-label {
+    font-size: 85%;
+    color: rgba(255, 255, 255, 0.644);
+}
+
+.bank-account-calendar {
+    height: 100%;
+}
+
+.bank-account-calendar-inner {
+    height: 80%;
+    margin: 4%;
+}
+
+.react-calendar {
+    background: transparent !important;
+    border: none !important;
+    color: white !important;
+    font-family: inherit !important;
+    transform: scale(0.9) !important;
+    margin-top: -6% !important;
+}
+
+.react-calendar__navigation__label, .react-calendar__navigation__arrow, .react-calendar__navigation__prev-button, .react-calendar__tile, .react-calendar__month-view__days__day, .react-calendar__tile, .react-calendar__year-view__months__month {
+    color: white !important;
+}
+
+.react-calendar__viewContainer {
+    transform: scale(0.86) !important;
+    margin-top: -14% !important;
+}
+
+.react-calendar__month-view  {
+    transform: scale(1.2) !important;
+    margin-top: 14% !important;
+}
+
+.react-calendar button:hover {
+    background-image: linear-gradient(to bottom right, var(--bank-secondary-color), var(--bank-teritary-color)) !important;
+    border: none !important;
+    outline: none !important;
+}
+
+.react-calendar button {
+    background: none !important; 
+}
+
+.react-calendar__month-view__days__day {
+    border-radius: 50% !important;
+}
+
+.bank-account-recent-transactions {
+    height: 100%;
+    margin: 4%;
+}
+
+.recent-transaction {
+    height: 12%;
+    width: 100%;
+    float: left;
+}
+
+.recent-transaction-icon {
+    border: 2px solid rgba(139, 139, 139, 0.685); 
+    float: left;
+    height: 65px;
+    width: 65px;
+    transform: scale(0.81);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recent-transaction-icon i {
+    font-size: 200%;
+}
+
+.recent-transaction-info {
+    float: left;
+    height: 100%;
+    width: 56%;
+    margin-left: 2%;
+    font-size: 94%;
+}
+
+.recent-transaction-info-label {
+    font-size: 90%;
+    margin-top: 8.9%;
+}
+
+.recent-transaction-info-date {
+    font-size: 85%;
+    color: rgba(255, 255, 255, 0.384);
+    margin-top: 0.9%;
+}
+
+.recent-transaction-money {
+    float: left;
+    width: 17%;
+    height: 82%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bank-exchange-rates {
+    height: 100%;
+    width: 100%;
+}
+
+.bank-exchange-rates div {
+    text-align: center;
+}
+
+.bank-exchange-rates div:first-child {
+    font-size: 290%;
+    color: rgba(255, 255, 255, 0.384);
+    margin-top: 17%;
+}
+
+.bank-exchange-rates div:last-child {
+    font-size: 120%;
+    margin-top: 4%;
+}

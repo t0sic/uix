@@ -1,0 +1,337 @@
+.markers-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 2;
+    font-family: 'Rubik';
+}
+
+.marker-main {
+    z-index: 5;
+}
+
+.marker {
+    height: 100px;
+    position: absolute;
+    width: 100px;
+    border: 1.5px solid rgba(190, 190, 190, 0.904);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+}
+
+.marker-close {
+    transition: 400ms ease-in-out;
+    transform: scale(0) !important;
+}
+
+.marker-effect .marker-1 {
+    z-index: 3;
+    animation-delay: 0.4s;
+    animation: glitch-skew 1s infinite linear alternate-reverse;
+    transition: 300 ease-in-out;
+}
+
+.marker-effect .marker-2 {
+    margin: 1px;
+    animation-delay: 0.9s;
+    border: 1.5px solid #00fff9;
+    z-index: 2;
+    animation: glitch-skew 1s infinite linear alternate-reverse;
+    transition: 300 ease-in-out;
+}
+
+.marker-effect .marker-3 {
+    margin: 2px;
+    border: 1.5px solid #ff00c1;
+    transform: skew(10deg);
+    z-index: 1;
+    animation-delay: 0.6s;
+    animation: glitch-skew 1s infinite linear alternate-reverse;
+    transition: 300 ease-in-out;
+}
+
+.marker-effect .marker-a {
+    z-index: 3;
+    animation-delay: 0.1s;
+    animation: glitch-anim 1s infinite linear alternate-reverse;
+    transition: 300 ease-in-out;
+}
+
+.marker-effect .marker-b {
+    border: 1.5px solid #00fff9;
+    animation-delay: 0.9s;
+    z-index: 2;
+    animation: glitch-anim2 1s infinite linear alternate-reverse;
+    transition: 300 ease-in-out;
+}
+
+.marker-effect .marker-c {
+    border: 1.5px solid #ff00c1;
+    transform: skew(10deg);
+    z-index: 1;
+    animation: glitch-anim2 1s infinite linear alternate-reverse;
+    transition: 300 ease-in-out;
+}
+
+.marker-inner {
+    height: 64px;
+    width: 64px;
+    transform: rotate(45deg);
+    transition: 400ms ease-in-out;
+    border: 1.5px solid rgba(190, 190, 190, 0.836);
+}
+
+.marker-effect .marker .marker-inner {
+    transform: rotate(0deg);
+}
+
+.marker-text {
+    position: absolute;
+    font-size: 110%;
+    z-index: 999;
+    margin-top: 1px;
+    color: white;
+    --height: -90px;
+    word-break: keep-all;
+    margin-top: calc(90px - 45px);
+    margin-left: var(--height);
+    transform: rotate(-45deg);
+    color: rgb(255, 255, 255);
+}
+
+.marker-effect .marker-text {
+    color: rgb(0, 0, 0);
+}
+
+.marker-effect .marker-text .marker-text-bar {
+    width: 100%;
+}
+
+.marker-text-bar {
+    height: 100%;
+    width: 0%;
+    background: rgba(255, 255, 255, 0.678);
+    position: absolute;
+    z-index: -1;
+    transition: 300ms ease-in-out;
+}
+
+.market-text-inner {
+    word-break: keep-all;
+    float: left;
+    width: 100%;
+    padding: 0px 30px 0px 5px
+}
+
+@keyframes glitch-anim {
+    0% {
+      clip: rect(100px, 9999px, 15px, 0);
+      transform: skew(0.75deg);
+    }
+    5% {
+      clip: rect(61px, 9999px, 35px, 0);
+      transform: skew(0.4deg);
+    }
+    10% {
+      clip: rect(91px, 9999px, 94px, 0);
+      transform: skew(0.56deg);
+    }
+    15% {
+      clip: rect(49px, 9999px, 33px, 0);
+      transform: skew(0.92deg);
+    }
+    20% {
+      clip: rect(100px, 9999px, 68px, 0);
+      transform: skew(0.56deg);
+    }
+    25% {
+      clip: rect(64px, 9999px, 43px, 0);
+      transform: skew(0.14deg);
+    }
+    30% {
+      clip: rect(67px, 9999px, 11px, 0);
+      transform: skew(0.78deg);
+    }
+    35% {
+      clip: rect(34px, 9999px, 30px, 0);
+      transform: skew(0.69deg);
+    }
+    40% {
+      clip: rect(94px, 9999px, 85px, 0);
+      transform: skew(0.02deg);
+    }
+    45% {
+      clip: rect(50px, 9999px, 52px, 0);
+      transform: skew(0.13deg);
+    }
+    50% {
+      clip: rect(5px, 9999px, 35px, 0);
+      transform: skew(0.31deg);
+    }
+    55% {
+      clip: rect(10px, 9999px, 25px, 0);
+      transform: skew(0.73deg);
+    }
+    60% {
+      clip: rect(47px, 9999px, 58px, 0);
+      transform: skew(0.39deg);
+    }
+    65% {
+      clip: rect(69px, 9999px, 29px, 0);
+      transform: skew(0.72deg);
+    }
+    70% {
+      clip: rect(19px, 9999px, 73px, 0);
+      transform: skew(0.46deg);
+    }
+    75% {
+      clip: rect(5px, 9999px, 86px, 0);
+      transform: skew(0.03deg);
+    }
+    80% {
+      clip: rect(72px, 9999px, 15px, 0);
+      transform: skew(0.88deg);
+    }
+    85% {
+      clip: rect(49px, 9999px, 7px, 0);
+      transform: skew(0.39deg);
+    }
+    90% {
+      clip: rect(91px, 9999px, 29px, 0);
+      transform: skew(0.24deg);
+    }
+    95% {
+      clip: rect(24px, 9999px, 24px, 0);
+      transform: skew(0.79deg);
+    }
+    100% {
+      clip: rect(20px, 9999px, 64px, 0);
+      transform: skew(0.75deg);
+    }
+  }
+  @keyframes glitch-anim2 {
+    0% {
+      clip: rect(86px, 9999px, 7px, 0);
+      transform: skew(0.98deg);
+    }
+    5% {
+      clip: rect(72px, 9999px, 22px, 0);
+      transform: skew(0.37deg);
+    }
+    10% {
+      clip: rect(3px, 9999px, 95px, 0);
+      transform: skew(0.7deg);
+    }
+    15% {
+      clip: rect(64px, 9999px, 1px, 0);
+      transform: skew(0.71deg);
+    }
+    20% {
+      clip: rect(14px, 9999px, 95px, 0);
+      transform: skew(0.2deg);
+    }
+    25% {
+      clip: rect(77px, 9999px, 28px, 0);
+      transform: skew(0.36deg);
+    }
+    30% {
+      clip: rect(11px, 9999px, 37px, 0);
+      transform: skew(0.25deg);
+    }
+    35% {
+      clip: rect(49px, 9999px, 50px, 0);
+      transform: skew(0.64deg);
+    }
+    40% {
+      clip: rect(58px, 9999px, 59px, 0);
+      transform: skew(0.27deg);
+    }
+    45% {
+      clip: rect(11px, 9999px, 93px, 0);
+      transform: skew(0.59deg);
+    }
+    50% {
+      clip: rect(58px, 9999px, 35px, 0);
+      transform: skew(0.92deg);
+    }
+    55% {
+      clip: rect(52px, 9999px, 39px, 0);
+      transform: skew(0.03deg);
+    }
+    60% {
+      clip: rect(56px, 9999px, 35px, 0);
+      transform: skew(0.19deg);
+    }
+    65% {
+      clip: rect(14px, 9999px, 35px, 0);
+      transform: skew(0.28deg);
+    }
+    70% {
+      clip: rect(59px, 9999px, 60px, 0);
+      transform: skew(0.17deg);
+    }
+    75% {
+      clip: rect(73px, 9999px, 43px, 0);
+      transform: skew(0.75deg);
+    }
+    80% {
+      clip: rect(43px, 9999px, 34px, 0);
+      transform: skew(0.34deg);
+    }
+    85% {
+      clip: rect(73px, 9999px, 46px, 0);
+      transform: skew(0.46deg);
+    }
+    90% {
+      clip: rect(34px, 9999px, 90px, 0);
+      transform: skew(0.63deg);
+    }
+    95% {
+      clip: rect(2px, 9999px, 97px, 0);
+      transform: skew(0.42deg);
+    }
+    100% {
+      clip: rect(44px, 9999px, 99px, 0);
+      transform: skew(0.32deg);
+    }
+  }
+  @keyframes glitch-skew {
+    0% {
+      transform: skew(5deg);
+    }
+    10% {
+      transform: skew(-2deg);
+    }
+    20% {
+      transform: skew(-2deg);
+    }
+    30% {
+      transform: skew(4deg);
+    }
+    40% {
+      transform: skew(-4deg);
+    }
+    50% {
+      transform: skew(-2deg);
+    }
+    60% {
+      transform: skew(-3deg);
+    }
+    70% {
+      transform: skew(-2deg);
+    }
+    80% {
+      transform: skew(-4deg);
+    }
+    90% {
+      transform: skew(-4deg);
+    }
+    100% {
+      transform: skew(2deg);
+    }
+  }
+
+

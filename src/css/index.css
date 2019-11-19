@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css?family=Rubik&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Fira+Mono:400");
+
+@font-face {
+    font-family: "Hacked";
+    src: url("../fonts/HACKED.ttf");
+}
+
+@font-face {
+    font-family: "Borda Regular 5";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Borda Regular 5"), url("../fonts/Borda-Bold.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Borda Regular 3";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Borda Regular 3"), url("../fonts/Borda-DemiBold.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Borda Regular 11";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Borda Regular 11"), url("../fonts/Borda-Italic.woff") format("woff");
+}
+
+
+@font-face {
+    font-family: "Borda Regular";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Borda Regular"), url("../fonts/Borda-Light.woff") format("woff");
+}
+
+
+@font-face {
+    font-family: "Borda Regular 12";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Borda Regular 12"), url("../fonts/Borda-Medium.woff") format("woff");
+}
+
+
+@font-face {
+    font-family: "Borda Regular 9";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Borda Regular 9"), url("../fonts/Borda.woff") format("woff");
+}
+
+:root {
+    --main-color: rgb(10, 10, 10);
+    --main-color-dark: rgb(0, 0, 0);
+    --main-color-light: rgb(20, 20, 20);
+    --secondary-color: rgb(255, 255, 255);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: "Hacked", sans-serif;
+    background: url("https://cdn.discordapp.com/attachments/614462914375581741/624594894911963146/15.53.53-09.08.19.jpg") no-repeat;
+    background-size: cover;
+    color: #FFF;
+    overflow: hidden;
+}
+
+.top {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.route-rendered {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.rendered {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.btn-main {
+    border: none;
+    margin: 0.6%;
+    padding: 0.8rem 2rem;
+    background: var(--main-color-dark);
+    color: white;
+    font-family: "Hacked", sans-serif;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    font-size: 105%;
+    border-radius: 3px;
+}
+
+.btn-main:hover {
+    background: #FFF;
+    transition: 400ms;
+    color: var(--main-color-dark);
+}
+
+.btn-main:focus {
+    outline: none;
+}
+
+.positive {
+    color: rgb(53, 226, 111);
+}
+
+.negative {
+    color: var(--bank-secondary-color);
+}
+
+.highlighted {
+    color: var(--bank-secondary-color);
+}

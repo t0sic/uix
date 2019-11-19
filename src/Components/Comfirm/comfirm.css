@@ -1,0 +1,48 @@
+.comfirm {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 7;
+    font-family: "Borda Regular 9";
+}
+
+.comfirm-background {
+    opacity: 0.76;
+    background-color: var(--main-color);
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-image: -webkit-linear-gradient(-90deg,    transparent 0%,    transparent 50%, black 50%,black 100%),
+                  -webkit-linear-gradient(  0deg, rgba(0,0,0,.1) 0%, rgba(0,0,0,.1) 50%,black 50%,black 100%);
+    background-size:.25em .25em;
+}
+
+.comfirm-container {
+    z-index: 2;
+    position: absolute;
+    min-width: 20%;
+    min-height: 20%;
+}
+
+.comfirm-title {
+    text-align: center;
+    font-size: 150%;
+    font-family: "Borda Regular 3";
+}
+
+.comfirm-text {
+    text-align: center;
+    margin: 5%;
+    font-size: 120%;
+}
+
+.comfirm-btns {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

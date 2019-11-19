@@ -1,0 +1,25 @@
+.progrss-bar-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress-bar {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 10%;
+    width: 4.4%;
+}
+
+.progress-bar-text {
+    position: absolute;
+    margin-left: 6.2%;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    opacity: 0.8;
+}

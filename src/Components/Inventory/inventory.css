@@ -1,0 +1,219 @@
+.inventory {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.479);
+    font-family: 'Rubik';
+    z-index: 3;
+    user-select: none;
+}
+
+.inventory-inner {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.inventory-dragging {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.inventory-container {
+    width: 27%;
+    height: 45%;
+}
+
+.inventory-container:first-child {
+    float: left;
+    margin: 15%;
+}
+
+.inventory-container:last-child {
+    float: right;
+    margin-right: 15%;
+    margin-top: 15%;
+}
+
+.inventory-container-bar {
+    height: 4%;
+    width: 27%;
+    margin-top: -2.5%;
+    position: absolute;
+}
+
+.inventory-container-bar div {
+    position: relative;
+    height: 100%;
+    width: 25%;
+    display: flex;
+    padding-left: 2%;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.39);
+    color: rgba(255, 255, 255, 0.733);
+    text-transform: uppercase;
+    font-size: 85%;
+    clip-path: polygon(93% 0, 100% 25%, 100% 100%, 6% 100%, 0% 75%, 0 0);
+    float: left;
+    margin-right: 2%;
+    transform: scale(0.9);
+    transition: 300ms;
+    opacity: 0.9;
+}
+
+.inventory-container-bar div:hover {
+    opacity: 0.9;
+}
+
+.inventory-container-bar div:first-child {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.inventory-container-weight {
+    font-size: 85%;
+    margin: 1%;
+    min-height: 3.1%;
+}
+
+.inventory-actions {
+    position: absolute;
+    width: 10%;
+    height: 40%;
+    margin-left: 45%;
+    margin-top: 18%;
+}
+
+.inventory-actions input {
+    text-align: center;
+    background: rgba(7, 7, 7, 0.452);
+    outline: 1px solid rgba(255, 255, 255, 0.089);
+    border: none;
+    padding: 6%;
+    margin-top: 60%;
+    color: white;
+}
+
+.inventory-actions button {
+    text-align: center;
+    background: rgba(7, 7, 7, 0.452);
+    outline: 1px solid rgba(255, 255, 255, 0.089);
+    margin-top: 10%;
+    padding: 8%;
+    border: none;
+    width: 100%;
+    color: rgba(255, 255, 255, 0.904);
+    text-transform: uppercase;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.inventory-actions button:hover input:hover {
+    opacity: 0.1;
+}
+
+.inventory-container-weight span {
+    color: rgba(255, 255, 255, 0.733);
+}
+
+.inventory-container-inner {
+    height: 100%;
+    overflow: auto;
+}
+
+.inventory-container-slot {
+    background: rgba(7, 7, 7, 0.452);
+    outline: 1px solid rgba(255, 255, 255, 0.089);
+    width: 20%;
+    height: 20%;
+    float: left;
+}
+
+.inventory-container-slot:hover {
+    opacity: 0.9;
+}
+
+.inventory-item {
+    height: 100%;
+    position: relative;
+}
+
+.inventory-item-image {
+    height: 100%;
+    width: 100%;
+    background: url("https://gamepedia.cursecdn.com/dayz_gamepedia/a/ac/Lockpick.png") no-repeat;
+    background-size: 50%;
+    background-position: center;
+    position: absolute;
+}
+
+.inventory-item-info {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.inventory-item-info span {
+    font-size: 75%;
+    color: rgba(255, 255, 255, 0.733);
+    padding: 5%;
+}
+
+.inventory-item-info span:first-child {
+    float: left;
+}
+
+.inventory-item-info span:last-child {
+    float: right;
+}
+
+.ui-draggable-dragging {
+    position: absolute;
+    z-index: 999;
+    width: 5%;
+    height: 8.9%;
+}
+
+::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+  }
+  
+::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ffffff7c;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ffffff;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+}
+
+::-webkit-scrollbar-track:hover {
+    background: #66666600;
+}
+
+::-webkit-scrollbar-track:active {
+    background: #33333300;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}

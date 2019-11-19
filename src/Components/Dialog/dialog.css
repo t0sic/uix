@@ -1,0 +1,80 @@
+.dialog-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 7;
+    background-color: rgba(10, 10, 10, 0.67);
+    background-image: -webkit-linear-gradient(-90deg,    transparent 0%,    transparent 50%, black 50%,black 100%),
+                  -webkit-linear-gradient(  0deg, rgba(0,0,0,.1) 0%, rgba(0,0,0,.1) 50%,black 50%,black 100%);
+    background-size:.25em .25em;
+}
+
+.dialog {
+    min-width: 16%;
+    height: 20%;
+    background: rgb(0, 0, 0);
+}
+
+.dialog-header {
+    text-align: center;
+    font-family: "Borda Regular 3";
+    margin: 8%;
+    font-size: 130%;
+}
+
+.dialog-input-container {
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialog-input-container input {
+    border: 1px solid gray;
+    background: none;
+    padding: 3% 6%;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+    transition: 400ms ease-in-out;
+}
+
+.dialog-input-container input:focus {
+    outline: 1px solid white;
+}
+
+.dialog-buttons {
+    height: 40%;
+}
+
+.dialog-buttons div {
+    float: left;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialog-buttons div button {
+    padding: 10px;
+    background: none;
+    border: 2px solid white;
+    color: white;
+    transition: 400ms ease-in-out;
+    text-transform: uppercase;
+    font-size: 75%;
+}
+
+.dialog-buttons div button:hover {
+    color: black;
+    background: white;
+}
+
+.dialog-buttons div button:focus {
+    outline: none;
+}
