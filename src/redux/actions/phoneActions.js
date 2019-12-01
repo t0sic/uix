@@ -3,7 +3,7 @@ import {
     UIX_PHONE_SET_AIRPLANE_MODE, UIX_PHONE_SET_WIFI_MODE, UIX_PHONE_SET_MOBILE_DATA_MODE, UIX_PHONE_SET_DARK_MODE,
     UIX_PHONE_SET_DISTURBE_MODE, UIX_PHONE_SET_BACKGROUND, UIX_PHONE_SET_THEME, UIX_PHONE_SET_SHOW_NUMBER,
     UIX_PHONE_SET_RINGTONE, UIX_PHONE_SET_CUSTOM_BACKGROUND, UIX_PHONE_SET_CONTACT, UIX_PHONE_SET_UPDATE_CONTACTS,
-    UIX_PHONE_SET_CONTACT_CREATE_INPUT
+    UIX_PHONE_SET_CONTACT_CREATE_INPUT, UIX_PHONE_SET_MESSAGES, UIX_PHONE_SET_NOTIFICATIONS, UIX_PHONE_SET_IMAGES
 } from "./phoneTypes";
 
 export const UIXPhoneSetPath = data => dispatch => {
@@ -72,4 +72,17 @@ export const UIXPhoneUpdateContacts = payload => dispatch => {
 
 export const UIXSetContactCreateInput = data => dispatch => {
     dispatch({ type: UIX_PHONE_SET_CONTACT_CREATE_INPUT, payload: data })
+}
+
+export const UIXSetMessages = data => dispatch => {
+    dispatch({ type: UIX_PHONE_SET_MESSAGES, payload: data })
+}
+
+export const UIXSetNotifications = data => dispatch => {
+    data = data.filter(c => c.notifications.length !== 0)
+    dispatch({ type: UIX_PHONE_SET_NOTIFICATIONS, payload: data })
+}
+
+export const UIXSetImages = data => dispatch => {
+    dispatch({ type: UIX_PHONE_SET_IMAGES, payload: data })
 }

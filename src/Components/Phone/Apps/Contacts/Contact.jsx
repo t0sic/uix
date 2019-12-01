@@ -2,6 +2,7 @@ import {
     UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetPath, UIXPhoneSetDarkBackground,
     UIXPhoneUpdateContacts, UIXSetContactCreateInput
 } from "../../../../redux/actions/phoneActions";
+import { numberFormater } from "../../Main/numberFormater";
 import { withTranslation } from "react-i18next";
 import React, { Component } from "react";
 import KeyNav from "../../Main/KeyNav";
@@ -33,7 +34,7 @@ export class Contact extends Component {
                                 {label ? label[0].toUpperCase() : <i className="fas fa-user" />}
                             </div>
                         </div>
-                        <div className="contact-label" style={{ color: color_t }}>{label ? label : number}</div>
+                        <div className="contact-label" style={{ color: color_t }}>{label ? label : numberFormater(number)}</div>
                         <div className="contact-actions">
                             <div className="contact-nav-element" data-pos={[0, 0]} data-func="message" data-class="contact-action-selected"><i className="fas fa-comment" /></div>
                             <div className="contact-nav-element" data-pos={[0, 1]} data-func="call" data-class="contact-action-selected"><i className="fas fa-phone" /></div>
@@ -47,7 +48,7 @@ export class Contact extends Component {
 
                         <div className="contact-info contact-nav-element" data-pos={[1, 0]} data-class="contact-info-selected" style={{ color: color_t }}>
                             <label>{t("apps.phone.apps.contact.iPhone")}</label>
-                            <div>{number}</div>
+                            <div>{numberFormater(number)}</div>
                         </div>
                         {label ?
                             <div className="contact-info contact-nav-element" data-pos={[2, 0]} data-class="contact-info-selected" style={{ color: color_t }}>

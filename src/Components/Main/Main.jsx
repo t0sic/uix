@@ -5,6 +5,7 @@ import EventListner from "./EventListner";
 import Router from "../../routes/Router";
 import store from "../../redux/store";
 import i18n from "../../i18/";
+import Time from "./Time";
 
 
 export class Main extends Component {
@@ -16,6 +17,7 @@ export class Main extends Component {
                     <div className="top">
                         <EventListner />
                         <Router />
+                        <Time />
                     </div>
                 </Provider>
             </I18nextProvider>

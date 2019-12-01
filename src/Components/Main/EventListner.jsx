@@ -15,6 +15,27 @@ export class EventListner extends Component {
     }
 
     handleTest = ({ keyCode }) => {
+        // this.props.UIXChangeLocation("inventory")
+        // this.props.UIXSetInventory({
+        //         leftContainer: [
+        //             {
+        //                 label: "Inventory", action: "inventory", maxWeight: 40.0, slots: 30, items: [
+        //                     { name: "lockpick", label: "Lockpick", weight: 0.2, count: 10, usable: false, slot: 1 },
+        //                     { name: "lockpick", label: "Lockpick", weight: 0.2, count: 10, usable: false, slot: 2 },
+        //                     { name: "lockpick", label: "Lockpick", weight: 0.2, count: 10, usable: false, slot: 3 },
+        //                 ]
+        //             }
+        //         ],
+        //         rightContainer: [
+        //             {
+        //                 label: "Marken", action: "ground", slots: 25, items: [
+        //                     { name: "lockpick", label: "Lockpick", weight: 0.2, count: 10, usable: false, slot: 1 },
+        //                     { name: "lockpick", label: "Lockpick", weight: 0.2, count: 10, usable: false, slot: 2 },
+        //                     { name: "lockpick", label: "Lockpick", weight: 0.2, count: 10, usable: false, slot: 3 },
+        //                 ]
+        //             },
+        //         ]
+        //     })
     }
 
     UIX_OPEN_MENU = (menu) => {

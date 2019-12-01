@@ -29,7 +29,8 @@
                     "messages-label": "Messages",
                     "camera-label": "Camera",
                     "twitter-label": "Twitter",
-                    "bank-label": "Bank"
+                    "bank-label": "Bank",
+                    "images-label": "Images"
                 },
                 "settings": {
                     "label": "Settings",
@@ -103,6 +104,12 @@
                 },
                 "contacts-favorites": {
                     "label": "Favorites"
+                },
+                "messages-all": {
+                    "label": "Messages"
+                },
+                "images": {
+                    "label": "Images"
                 }
             }
         },

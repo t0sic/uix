@@ -4,7 +4,7 @@ import {
     UIX_PHONE_SET_AIRPLANE_MODE, UIX_PHONE_SET_WIFI_MODE, UIX_PHONE_SET_MOBILE_DATA_MODE, UIX_PHONE_SET_DARK_MODE,
     UIX_PHONE_SET_DISTURBE_MODE, UIX_PHONE_SET_BACKGROUND, UIX_PHONE_SET_THEME, UIX_PHONE_SET_SHOW_NUMBER,
     UIX_PHONE_SET_RINGTONE, UIX_PHONE_SET_CUSTOM_BACKGROUND, UIX_PHONE_SET_CONTACT, UIX_PHONE_SET_UPDATE_CONTACTS,
-    UIX_PHONE_SET_CONTACT_CREATE_INPUT
+    UIX_PHONE_SET_CONTACT_CREATE_INPUT, UIX_PHONE_SET_MESSAGES, UIX_PHONE_SET_NOTIFICATIONS, UIX_PHONE_SET_IMAGES
 } from "../actions/phoneTypes";
 
 // Redux is sloppy sometimes so you have to copy the object and return a new one becuase it thinks we are mutating the original state lol
@@ -113,6 +113,24 @@ export default function (state = initialState, { payload, type }) {
             }
         case UIX_PHONE_SET_CONTACT_CREATE_INPUT:
             newState.apps.contactCreate = payload
+            return {
+                ...state,
+                apps: newState.apps
+            }
+        case UIX_PHONE_SET_MESSAGES:
+            newState.apps.messages = payload
+            return {
+                ...state,
+                apps: newState.apps
+            }
+        case UIX_PHONE_SET_NOTIFICATIONS:
+            newState.apps.notifications = payload
+            return {
+                ...state,
+                apps: newState.apps
+            }
+        case UIX_PHONE_SET_IMAGES:
+            newState.apps.images = payload
             return {
                 ...state,
                 apps: newState.apps

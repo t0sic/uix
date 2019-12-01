@@ -312,3 +312,71 @@
 .contact-favorite-selected {
     color: rgb(0, 122, 255) !important;
 }
+
+/* Contacts Keypad */
+
+.contacts-keypad-middle {
+    height: 90%;
+    overflow: hidden;
+}
+
+.contacts-keypad-input {
+    height: 15%;
+    margin-top: 15%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 140%;
+}
+
+.contacts-keypad {
+    height: 60%;
+    padding: 10%;
+    margin-top: -8%;
+}
+
+.keypad-circle {
+    width: 40px;
+    font-size: 110%;
+    height: 40px;
+    float: left;
+    margin: 5.5%;
+    margin-bottom: 1%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.keypad-circle:last-child {
+    font-size: 100%;
+}
+
+.keypad-circle-selected {
+    color: rgb(0, 122, 255) !important;
+}
+
+.keypad-circle-call-selected {
+    background: rgb(0, 122, 255) !important;
+}
+
+.contacts-footer-badge {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    color: #fff;
+    background: rgb(255, 59, 48);
+    box-sizing: border-box;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 15px;
+    border-radius: 18px;
+    padding: 0 4px;
+    height: 18px;
+    min-width: 18px;
+    transform: scale(0.8);
+    margin-left: 7%;
+    margin-top: -3%;
+}

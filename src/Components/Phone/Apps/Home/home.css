@@ -37,3 +37,27 @@
 .home-app-selected {
     background: #515153;
 }
+
+root {
+    --f7-badge-text-color:#fff;--f7-badge-bg-color:#8e8e93;--f7-badge-padding:0 4px;--f7-badge-in-icon-size:16px;--f7-badge-in-icon-font-size:10px;--f7-badge-font-weight:normal;--f7-badge-font-size:12px;--f7-badge-size:20px
+}
+
+.home-app-notification {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    color: #fff;
+    background: rgb(255, 59, 48);
+    box-sizing: border-box;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 15px;
+    border-radius: 18px;
+    padding: 0 4px;
+    height: 18px;
+    min-width: 18px;
+    transform: scale(0.8);
+    margin-left: 8%;
+}

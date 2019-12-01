@@ -28,3 +28,35 @@
     position: absolute;
     transform: scale(0);
 }
+
+
+.dialog-slide-enter {
+    position: absolute;
+    transform: translateY(100%);
+}
+
+.dialog-slide-enter-active {
+    position: absolute;
+    transform: translateY(0%);
+    transition: 300ms;
+}
+
+.dialog-slide-enter-done {
+    position: absolute;
+    transform: translateY(0%);
+}
+
+
+.dialog-slide-exit {
+    position: absolute;
+    transform: translateY(0%);
+}
+.dialog-slide-exit-active {
+    position: absolute;
+    transform: translateY(100%);
+    transition: 300ms;
+}
+.dialog-slide-exit-done {
+    position: absolute;
+    transform: translateY(100%);
+}

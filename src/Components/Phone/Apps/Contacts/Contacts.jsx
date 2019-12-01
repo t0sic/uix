@@ -2,6 +2,7 @@ import {
     UIXPhoneSetDarkBackground, UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetPath, 
     UIXPhoneSetContact, UIXSetContactCreateInput 
 } from "../../../../redux/actions/phoneActions";
+import { numberFormater } from "../../Main/numberFormater";
 import { withTranslation } from "react-i18next";
 import React, { Component } from "react";
 import KeyNav from "../../Main/KeyNav";
@@ -9,6 +10,7 @@ import { connect } from "react-redux";
 import "./contacts.css";
 
 export class Contacts extends Component {
+
     render() {
 
         const { settings, t } = this.props
@@ -18,6 +20,7 @@ export class Contacts extends Component {
         const color_s = darkMode ? "rgb(44, 44, 46)" : "rgb(229, 229, 234)"
         const color_t = darkMode ? "white" : "black"
         const contacts = this.contacts()
+        const notifications = this.notifications()
 
         return (
             <div className="app">
@@ -43,6 +46,7 @@ export class Contacts extends Component {
                         </div>
                         <div className="contact-footer-col contacts-nav-element" data-focusfunc="openApp" data-param="contacts-recent" data-pos={[this.props.contacts.length + 1, 0]} data-class="contact-footer-icon-selected">
                             <div className="contacts-footer-icon">
+                                {notifications.recent ? <div className="contacts-footer-badge">{notifications.recent.length}</div> : null}
                                 <i className="fas fa-clock" style={{ color: color_t_i }} />
                             </div>
                             <div className="contacts-footer-label" style={{ color: color_t_i }}>{t("apps.phone.apps.contacts-footer.recent")}</div>
@@ -53,7 +57,7 @@ export class Contacts extends Component {
                             </div>
                             <div className="contacts-footer-label" style={{ color: color_t_i }}>{t("apps.phone.apps.contacts-footer.contacts")}</div>
                         </div>
-                        <div className="contact-footer-col contacts-nav-element" data-pos={[this.props.contacts.length + 1, 2]} data-class="contact-footer-icon-selected">
+                        <div className="contact-footer-col contacts-nav-element" data-focusfunc="openApp" data-param="contacts-keypad" data-pos={[this.props.contacts.length + 1, 2]} data-class="contact-footer-icon-selected">
                             <div className="contacts-footer-icon">
                                 <i className="fas fa-hashtag call-icon" style={{ color: color_t_i }} />
                             </div>
@@ -65,6 +69,23 @@ export class Contacts extends Component {
                 </div>
             </div>
         )
+    }
+
+    notifications = () => {
+        let notifications = null
+        let output = {}
+
+        this.props.notifications.forEach((_notifications) => {
+            if (_notifications.app === "contacts") {
+                notifications = _notifications.notifications
+            }
+        })
+
+        if (!notifications) return output
+
+        output.recent = notifications.filter(c => c.type === "recent" )
+
+        return output
     }
 
     contacts = () => {
@@ -112,7 +133,7 @@ export class Contacts extends Component {
                     data-enterfunc="openContact"
                     data-enterdata={JSON.stringify(contact)}
                     data-pos={[i + 1, 1]}>
-                    {label ? label : number}
+                    {label ? label : numberFormater(number)}
                 </div>)
         })
 
@@ -198,7 +219,8 @@ export class Contacts extends Component {
 
 const mapStateToProps = ({ phone }) => ({
     settings: phone.settings,
-    contacts: phone.apps.contacts
+    contacts: phone.apps.contacts,
+    notifications: phone.apps.notifications
 })
 
 const mapDispatchToProps = {
@@ -207,7 +229,7 @@ const mapDispatchToProps = {
     UIXSetContactCreateInput,
     UIXPhoneSetAnitmation,
     UIXPhoneSetContact,
-    UIXPhoneSetPath
+    UIXPhoneSetPath,
 }
 
 export default withTranslation()(connect(mapStateToProps, mapDispatchToProps)(Contacts))

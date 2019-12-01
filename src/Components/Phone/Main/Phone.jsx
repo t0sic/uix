@@ -11,7 +11,7 @@ class Phone extends Component {
 
         const { phone } = this.props
         const { settings, general } = phone
-        const { displayBackground } = general
+        const { displayBackground, classes } = general
         const { background } = settings
         const { url } = background
 

@@ -1,5 +1,9 @@
 import { state as initialState } from "./state";
-import { UIX_UPDATE_3D_MARKER, UIX_INVENTORY_SET, UIX_UPDATE_MENUS, UIX_UPDATE_PROGRESS_BAR, UIX_CHANGE_LOCATION, UIX_SET_INGAME_TIME, UIX_SET_PLAYER, UIX_UPDATE_BANK, UIX_SET_COMFIRM_DIALOG, UIX_SET_DIALOG, UIX_SET_INVENTORY, UIX_SET_CHARACTERS, UIX_SET_MENU_INDEX, UIX_SET_CHARACTER } from "../actions/types";
+import { 
+    UIX_UPDATE_3D_MARKER, UIX_INVENTORY_SET, UIX_UPDATE_MENUS, UIX_UPDATE_PROGRESS_BAR, UIX_CHANGE_LOCATION, 
+    UIX_SET_INGAME_TIME, UIX_SET_PLAYER, UIX_UPDATE_BANK, UIX_SET_COMFIRM_DIALOG, UIX_SET_DIALOG, UIX_SET_INVENTORY, 
+    UIX_SET_CHARACTERS, UIX_SET_MENU_INDEX, UIX_SET_CHARACTER, UIX_SET_WORLD
+} from "../actions/types";
 
 // Redux is sloppy sometimes so you have to copy the object and return a new one becuase it thinks we are mutating the original state lol
 const copy = (menu) => JSON.parse(JSON.stringify(menu))
@@ -92,6 +96,13 @@ export default function (state = initialState, { payload, type }) {
                 ...state,
                 player: newState.player
             }
+        case UIX_SET_WORLD: 
+            newState.world = payload
+            return {
+                ...state,
+                world: newState.world
+            }
+            
         default:
             return state
     }

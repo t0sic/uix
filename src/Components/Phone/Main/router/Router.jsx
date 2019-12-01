@@ -25,7 +25,7 @@ export class Router extends Component {
                             onEntered={() => window.dispatchEvent(new CustomEvent("phone", { detail: { app: route.path, action: "entered" } }))}
                             onExited={() => window.dispatchEvent(new CustomEvent("phone", { detail: { app: route.path, action: "exited" } }))}
                         >
-                            <Component setKeyNav={this.props.setKeyNav} />
+                            <Component  keyNav={this.props.keyNav} setKeyNav={this.props.setKeyNav} />
                         </CSSTransition>
                     )
                 })

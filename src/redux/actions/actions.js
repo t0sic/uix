@@ -2,7 +2,7 @@ import {
     UIX_INVENTORY_SET, UIX_UPDATE_MENUS, UIX_UPDATE_PROGRESS_BAR, UIX_CHANGE_LOCATION,
     UIX_SET_INGAME_TIME, UIX_SET_PLAYER, UIX_SET_COMFIRM_DIALOG, UIX_SET_DIALOG,
     UIX_SET_INVENTORY, UIX_SET_CHARACTERS, UIX_SET_MENU_INDEX, UIX_SET_CHARACTER,
-    UIX_UPDATE_3D_MARKER
+    UIX_UPDATE_3D_MARKER, UIX_SET_WORLD
 } from "./types";
 
 export const UIXSetMenuIndex = index => dispatch => {
@@ -56,4 +56,8 @@ export const UIXSetCharacter = data => dispatch => {
 
 export const UIXUpdate3DMarker = data => dispatch => {
     dispatch({ type: UIX_UPDATE_3D_MARKER, payload: data })
+}
+
+export const UIXSetWorld = data => dispatch => {
+    dispatch({ type: UIX_SET_WORLD, payload: data })
 }

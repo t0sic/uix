@@ -2,6 +2,7 @@ import {
     UIXPhoneSetDarkBackground, UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetPath,
     UIXPhoneSetContact
 } from "../../../../redux/actions/phoneActions";
+import { numberFormater } from "../../Main/numberFormater";
 import { withTranslation } from "react-i18next";
 import React, { Component } from "react";
 import KeyNav from "../../Main/KeyNav";
@@ -14,6 +15,7 @@ export class Favorites extends Component {
         const { settings, t } = this.props
         const { darkMode } = settings
         const favorites = this.favorites()
+        const notifications = this.notifications()
         const color_t_i = darkMode ? "rgb(229, 229, 234)" : "rgb(44, 44, 46)"
         const color_p = darkMode ? "rgb(28, 28, 30)" : "rgb(242, 242, 247)"
         const color_s = darkMode ? "rgb(44, 44, 46)" : "rgb(229, 229, 234)"
@@ -40,6 +42,7 @@ export class Favorites extends Component {
                         </div>
                         <div className="contact-footer-col contacts-favorites-nav-element" data-focusfunc="openApp" data-param="contacts-recent" data-pos={[favorites.length, 1]} data-class="contact-footer-icon-selected">
                             <div className="contacts-footer-icon">
+                                {notifications.recent ? <div className="contacts-footer-badge">{notifications.recent.length}</div> : null}
                                 <i className="fas fa-clock" style={{ color: color_t_i }} />
                             </div>
                             <div className="contacts-footer-label" style={{ color: color_t_i }}>{t("apps.phone.apps.contacts-footer.recent")}</div>
@@ -64,6 +67,23 @@ export class Favorites extends Component {
         )
     }
 
+    notifications = () => {
+        let notifications = null
+        let output = {}
+
+        this.props.notifications.forEach((_notifications) => {
+            if (_notifications.app === "contacts") {
+                notifications = _notifications.notifications
+            }
+        })
+
+        if (!notifications) return output
+
+        output.recent = notifications.filter(c => c.type === "recent" )
+
+        return output
+    }
+
     openContact = (data) => {
         const {
             UIXPhoneSetContact,
@@ -86,7 +106,7 @@ export class Favorites extends Component {
         let output = []
 
         favorites.forEach((contact, i) => {
-            const label = contact.label ? contact.label : contact.number
+            const label = contact.label ? contact.label : numberFormater(contact.number)
             output.push(
                 <div
                     key={i}
@@ -162,7 +182,8 @@ export class Favorites extends Component {
 
 const mapStateToProps = ({ phone }) => ({
     settings: phone.settings,
-    contacts: phone.apps.contacts
+    contacts: phone.apps.contacts,
+    notifications: phone.apps.notifications,
 })
 
 const mapDispatchToProps = {

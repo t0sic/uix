@@ -21,25 +21,28 @@ export class SettingsCall extends Component {
                 <div className="settings" style={{ background: color_p }}>
 
                     <div className="settings-top" style={{ background: color_s }}>
-                        <div style={{ color: color_t }}>{t("apps.phone.apps.settings-call.label")}</div>
+                        <div data-pos={[0, 0]} data-func="backspace" data-class="settings-quit-selected" className="settings-quit settings-call-navigation-element">
+                            <i className="fas fa-chevron-left" style={{ color: color_t }} />
+                        </div>
+                        <div className="settings-label" style={{ color: color_t }}>{t("apps.phone.apps.settings-call.label")}</div>
                     </div>
 
                     <div className="settings-middle">
 
                         <div className="settings-middle-call">
                             <div
-                                data-pos={[0, 0]}
+                                data-pos={[1, 0]}
                                 data-func="ringtones"
                                 data-class="settings-call-option-selected"
-                                className="settings-call-option"
+                                className="settings-call-option settings-call-navigation-element"
                                 style={{ background: color_s, color: color_t }}>
                                 {t("apps.phone.apps.settings-call.change-ringtone")}
                             </div>
                             <div
-                                data-pos={[1, 0]}
+                                data-pos={[2, 0]}
                                 data-func="shownumber"
                                 data-class="settings-call-option-selected"
-                                className="settings-call-option"
+                                className="settings-call-option settings-call-navigation-element"
                                 style={{ background: color_s, color: color_t, height: "42px" }}>
                                 <div className="settings-call-option-label">{t("apps.phone.apps.settings-call.show-number")}</div>
                                 <div className="settings-call-option-switch">
@@ -94,7 +97,7 @@ export class SettingsCall extends Component {
 
     entered = () => {
         const { setKeyNav, UIXPhoneSetDarkBackground, settings } = this.props
-        const elements = Array.from(document.getElementsByClassName("settings-middle-call")[0].childNodes)
+        const elements = Array.from(document.getElementsByClassName("settings-call-navigation-element"))
 
         const navigation = new KeyNav(elements, (event, data) => this[event](data))
         const item = window.localStorage.getItem("settings-call")

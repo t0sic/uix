@@ -1,6 +1,6 @@
 export const state = {
     application: {
-        path: "phone",
+        path: "",
         time: new Date()
     },
     world: {
@@ -23,14 +23,14 @@ export const state = {
                 leftContainer: [
                     {
                         label: "Inventory", action: "inventory", maxWeight: 20, slots: 30, items: [
-                            // { name: "lockpick", label: "Lockpick", weight: 0.2, count: 10, usable: false, slot: 2 }
+                            { name: "lockpick", label: "Lockpick", weight: 0.2, count: 10, usable: false, slot: 2 }
                         ]
                     }
                 ],
                 rightContainer: [
                     {
                         label: "Marken", action: "ground", slots: 25, items: [
-                            // { name: "lockpick", label: "Lockpick", weight: 0.2, count: 12, usable: false, slot: 5 }
+                            { name: "lockpick", label: "Lockpick", weight: 0.2, count: 12, usable: false, slot: 5 }
                         ]
                     },
                     // {

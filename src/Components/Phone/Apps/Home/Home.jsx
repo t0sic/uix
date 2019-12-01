@@ -1,4 +1,4 @@
-import { UIXPhoneSetPath, UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetDarkBackground } from "../../../../redux/actions/phoneActions";
+import { UIXPhoneSetPath, UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetDarkBackground, UIXSetImages } from "../../../../redux/actions/phoneActions";
 import { withTranslation } from "react-i18next";
 import React, { Component } from "react";
 import KeyNav from "../../Main/KeyNav";
@@ -8,7 +8,7 @@ import "./home.css";
 export class Home extends Component {
     render() {
 
-        const { settings, t } = this.props
+        const { settings, t, notifications } = this.props
         const { background, theme } = settings
         const { dark } = background
         const apps = [
@@ -25,15 +25,15 @@ export class Home extends Component {
                 app: "contacts",
                 icon: <i className="fas fa-phone" />,
                 styles: {
-                    background: "#4D9A3D"
+                    background: "rgb(52, 199, 89)"
                 }
             },
             {
                 label: t("apps.phone.apps.home.messages-label"),
-                app: "messages",
+                app: "messages-all",
                 icon: <i className="fas fa-comment" />,
                 styles: {
-                    background: "#4D9A3D"
+                    background: "rgb(52, 199, 89)"
                 }
             },
             {
@@ -60,19 +60,34 @@ export class Home extends Component {
                     background: "rgb(206, 51, 100)"
                 }
             },
+            { 
+                label: t("apps.phone.apps.home.images-label"),
+                app: "images",
+                func: "onImagesOpen",
+                icon: <i className="fas fa-th" />,
+                styles: {
+                    background: "rgb(88, 86, 214)"
+                }
+            }
         ]
 
         return (
             <div className="app">
                 <div className="home-container">
-                    {apps.map(({ app, label, styles, icon, data }, i) => {
+                    {apps.map(({ app, label, styles, icon, data, func }, i) => {
                         const style = (theme.type === "default") ? styles : theme.style
                         const labelStyle = { color: dark ? "white" : "black" }
                         const row = Math.floor(i / 4)
                         const column = i % 4
+                        let notification = null
+                        
+                        notifications.forEach((_notification) => {
+                            if (_notification.app === app) notification = _notification
+                        })
 
                         return (
-                            <div className="home-app" data-app={JSON.stringify({ app, data })} data-class="home-app-selected" data-pos={[row, column]} key={i}>
+                            <div className="home-app" data-app={JSON.stringify({ app, data })} data-func={func} data-class="home-app-selected" data-pos={[row, column]} key={i}>
+                                {notification ? <div className="home-app-notification">{notification.notifications.length}</div>: null}
                                 <div className="home-app-icon" style={style}>{icon}</div>
                                 <div className="home-app-label" style={labelStyle}>{label}</div>
                             </div>
@@ -85,13 +100,22 @@ export class Home extends Component {
 
     openApp = (data) => {
         const { UIXPhoneSetPath, UIXPhoneSetAnimationDuration, UIXPhoneSetAnitmation } = this.props
-        const { app } = data
+        const app = JSON.parse(data.app)
+        const { func } = data
+        
+        if (func && this[func]) this[func]()
 
         UIXPhoneSetAnitmation("default")
         UIXPhoneSetAnimationDuration(200)
-        UIXPhoneSetPath(app)
+        UIXPhoneSetPath(app.app)
     }
 
+    onImagesOpen = () => {
+        const images = this.props.images
+
+        images.quit = "home"
+        UIXSetImages(images)
+    }
 
     entered = () => {
         const elements = Array.from(document.getElementsByClassName("home-container")[0].childNodes)
@@ -116,7 +140,7 @@ export class Home extends Component {
         this[detail.action]()
     }
 
-    enter = ({ dataset }) => { this.openApp(JSON.parse(dataset.app)) }
+    enter = ({ dataset }) => { this.openApp(dataset) }
     focus = (element) => {
         window.localStorage.setItem("home", JSON.stringify(element.pos))
     }
@@ -126,7 +150,9 @@ export class Home extends Component {
 }
 
 const mapStateToProps = ({ phone }) => ({
-    settings: phone.settings
+    notifications: phone.apps.notifications,
+    images: phone.apps.images,
+    settings: phone.settings,
 })
 
 const mapDispatchToProps = {

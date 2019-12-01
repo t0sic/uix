@@ -11,7 +11,7 @@ export class Screen extends Component {
     render() {
         return (
             <div className="screen">
-                <Router setKeyNav={(keyNav) => this.setState({ keyNav })} />
+                <Router setKeyNav={(keyNav) => this.setState({ keyNav })} keyNav={this.state.keyNav} />
             </div>
         )
     }
@@ -50,8 +50,9 @@ export class Screen extends Component {
                 // ENTER
                 break;
             case 8:
-                // BACKSPACE
+                if (!keyNav) return
                 keyNav.navigate("BACKSPACE")
+                // BACKSPACE
                 break;
             default:
         }

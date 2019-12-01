@@ -6,7 +6,7 @@ import "../css/statusbar.css";
 export class StatusBar extends Component {
     render() {
 
-        const { phone, t } = this.props
+        const { phone, t, time } = this.props
         const { general, settings, status } = phone
         const { battery } = status
         const { darkBackground, wifi, mobileData, showStatusBar } = general
@@ -39,7 +39,7 @@ export class StatusBar extends Component {
                     }
                 </div>
                 <div className="status-bar-middle">
-                    <div className="status-bar-time" style={style}>19:34</div>
+                <div className="status-bar-time" style={style}>{time}</div>
                 </div>
                 <div className="status-bar-right">
                     <div style={batteryBarStyle} className="status-bar-battery-bar">
@@ -54,8 +54,9 @@ export class StatusBar extends Component {
     }
 }
 
-const mapStateToProps = ({ phone }) => ({
-    phone
+const mapStateToProps = ({ phone, top }) => ({
+    phone,
+    time: top.world.time
 })
 
 const mapDispatchToProps = {

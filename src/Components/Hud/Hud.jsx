@@ -5,9 +5,9 @@ import "./hud.css";
 export class Hud extends Component {
     render() {
 
-        const { world, player } = this.props
-        const { equipedWeapon } = player.character
+        const { player, world } = this.props
         const { time } = world
+        const { equipedWeapon } = player.character
 
         return (
             <div className="hud">

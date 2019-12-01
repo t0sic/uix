@@ -61,3 +61,15 @@
     position: absolute;
     overflow: hidden;
 }
+
+.phone-portrait {
+    margin-left: -35%;
+    margin-top: -17%;
+    transform: scale(1.8);
+}
+
+.phone-landscape {
+    margin-left: -35%;
+    margin-top: -17%;
+    transform: scale(1.8), rotate(90deg);
+}

@@ -23,6 +23,7 @@ export class Rendered extends Component {
             </div>
         )
     }
+
 }
 
 const mapStateToProps = ({ top }) => ({

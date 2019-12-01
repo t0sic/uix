@@ -1,4 +1,5 @@
-import { UIXPhoneSetDarkBackground, UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetPath, UIXPhoneSetContact } from "../../../../redux/actions/phoneActions";
+import { UIXPhoneSetDarkBackground, UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetPath, UIXPhoneSetContact, UIXSetNotifications } from "../../../../redux/actions/phoneActions";
+import { numberFormater } from "../../Main/numberFormater";
 import { withTranslation } from "react-i18next";
 import React, { Component } from "react";
 import KeyNav from "../../Main/KeyNav";
@@ -120,7 +121,7 @@ export class Recent extends Component {
         recent.forEach((caller, i) => {
             const { number, time, missed } = caller
             const contact = this.getContactFromNumber(number)
-            const label = contact.label ? contact.label : contact.number
+            const label = contact.label ? contact.label : numberFormater(contact.number)
 
             output.push(
                 <div 
@@ -196,6 +197,7 @@ export class Recent extends Component {
         const elements = Array.from(document.getElementsByClassName("contacts-recent-nav-element"))
         const navigation = new KeyNav(elements, (event, data) => this[event](data))
         const item = window.localStorage.getItem("contacts-recent")
+
         if (item && navigation.isPosition(JSON.parse(item))) {
             navigation.position.horizontal = JSON.parse(item)[1]
             navigation.position.vertical = JSON.parse(item)[0]
@@ -203,23 +205,40 @@ export class Recent extends Component {
             navigation.position.horizontal = 1
             navigation.position.vertical = recent.length
         }
+
+        this.removeNotifications()
         navigation.handleSelected()
         setKeyNav(navigation)
         UIXPhoneSetDarkBackground(settings.darkMode)
     }
 
+    removeNotifications = () => {
+        const { UIXSetNotifications } = this.props
+        let notifications = this.props.notifications
+        notifications.forEach((_notifications, i) => {
+            if (_notifications.app === "contacts") {
+                const filtered = _notifications.notifications.filter(c => c.type !== "recent")
+                notifications[i].notifications = filtered
+            }
+        })
+
+        UIXSetNotifications(notifications)
+    }
+
 }
 
 const mapStateToProps = ({ phone }) => ({
-    settings: phone.settings,
+    notifications: phone.apps.notifications,
     contacts: phone.apps.contacts,
-    recent: phone.apps.recent
+    recent: phone.apps.recent,
+    settings: phone.settings,
 })
 
 const mapDispatchToProps = {
     UIXPhoneSetAnimationDuration,
     UIXPhoneSetDarkBackground,
     UIXPhoneSetAnitmation,
+    UIXSetNotifications,
     UIXPhoneSetContact,
     UIXPhoneSetPath
 }

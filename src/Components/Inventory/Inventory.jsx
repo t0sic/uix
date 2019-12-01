@@ -15,6 +15,7 @@ export class Inventory extends Component {
             rightContainer: "ground"
         },
         check: false,
+        input: "",
     }
 
     render() {
@@ -68,7 +69,7 @@ export class Inventory extends Component {
 
             drop: function (event, ui) {
                 if ($(ui.draggable).data("item").item.usable) {
-                    // console.log($(ui.draggable).data("item").item)
+                    window.emit("UIX_INVENTORY_USE_ITEM", $(ui.draggable).data("item").item)
                 }
             }
         })
@@ -77,7 +78,7 @@ export class Inventory extends Component {
             accept: ".inventory-item",
 
             drop: function (event, ui) {
-                // console.log($(ui.draggable).data("item").item)
+                window.emit("UIX_INVENTORY_GIVE_ITEM", {item: $(ui.draggable).data("item").item, amount: this.state.input})
             }
         })
 
@@ -93,7 +94,7 @@ export class Inventory extends Component {
     }
 
     handleKeyup = ({ keyCode }) => {
-        if ((keyCode === 8 || keyCode === 27) && !this.isFocused) this.props.UIXChangeLocation("")
+        if ((keyCode === 8 || keyCode === 27 || keyCode === 9) && !this.isFocused) this.props.UIXChangeLocation("")
     }
 
     getWeight = (container) => {
