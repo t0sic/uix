@@ -1,6 +1,6 @@
 export const state = {
     application: {
-        path: "",
+        path: "phone",
         time: new Date()
     },
     world: {
@@ -22,17 +22,38 @@ export const state = {
             inventory: {
                 leftContainer: [
                     {
-                        label: "Inventory", action: "inventory", maxWeight: 20, slots: 30, items: [
-                            { name: "lockpick", label: "Lockpick", weight: 0.2, count: 10, usable: false, slot: 2 }
+                        label: "Inventory",
+                        action: "inventory",
+                        maxWeight: 20,
+                        slots: 30,
+                        items: [
+                            {
+                                name: "lockpick",
+                                label: "Lockpick",
+                                weight: 0.2,
+                                count: 10,
+                                usable: false,
+                                slot: 2
+                            }
                         ]
                     }
                 ],
                 rightContainer: [
                     {
-                        label: "Marken", action: "ground", slots: 25, items: [
-                            { name: "lockpick", label: "Lockpick", weight: 0.2, count: 12, usable: false, slot: 5 }
+                        label: "Marken",
+                        action: "ground",
+                        slots: 25,
+                        items: [
+                            {
+                                name: "lockpick",
+                                label: "Lockpick",
+                                weight: 0.2,
+                                count: 12,
+                                usable: false,
+                                slot: 5
+                            }
                         ]
-                    },
+                    }
                     // {
                     //     label: "Backlucka", action: "backlucka", slots: 30, items: [
                     //         // { name: "lockpick", label: "Lockpick", weight: 0.2, count: 10, usable: false, slot: 2 }
@@ -54,7 +75,8 @@ export const state = {
         bank: {
             accounts: [
                 {
-                    balance: 5429, accountNumber: "4938 4893 2103 1002",
+                    balance: 5429,
+                    accountNumber: "4938 4893 2103 1002",
                     data: [
                         // { month: "Jan", moneyMade: 20000 },
                         // { month: "Feb", moneyMade: 1201 },
@@ -80,7 +102,8 @@ export const state = {
                     ]
                 },
                 {
-                    balance: 122229, accountNumber: "4837 2378 7672 3784",
+                    balance: 122229,
+                    accountNumber: "4837 2378 7672 3784",
                     data: [
                         // { month: "Jan", moneyMade: 140302 },
                         // { month: "Feb", moneyMade: 13921 },
@@ -106,7 +129,8 @@ export const state = {
                     ]
                 },
                 {
-                    balance: 5429, accountNumber: "7698 2538 8567 2572",
+                    balance: 5429,
+                    accountNumber: "7698 2538 8567 2572",
                     data: [
                         // { month: "Jan", moneyMade: 2000 },
                         // { month: "Feb", moneyMade: 500 },
@@ -130,14 +154,14 @@ export const state = {
                         // { value: -850, date: new Date(), label: "IKEA Möbler" },
                         // { value: 10000, date: new Date(), label: "Fund Received" },
                     ]
-                },
+                }
             ]
         }
     },
     rendered: {
         dialog: {
             display: false,
-            header: "Enter amount",
+            header: "Enter amount"
         },
         menu: {
             index: 0,
@@ -170,8 +194,6 @@ export const state = {
             yes: "Yes",
             no: "No"
         },
-        hud: {
-
-        },
-    },
+        hud: {}
+    }
 }

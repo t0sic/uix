@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { CSSTransition } from "react-transition-group";
-import "./dialog.css";
+import { CSSTransition } from "react-transition-group"
+import React, { Component } from "react"
+import { connect } from "react-redux"
+import "./dialog.css"
 
 export class Dialog extends Component {
     state = {
@@ -9,7 +9,6 @@ export class Dialog extends Component {
     }
 
     render() {
-
         const { dialog } = this.props
         const { display, header, source } = dialog
         const { input } = this.state
@@ -25,14 +24,39 @@ export class Dialog extends Component {
                     <div className="dialog">
                         <div className="dialog-header">{header}</div>
                         <div className="dialog-input-container">
-                            <input onChange={({ target }) => this.setState({ input: target.value })} value={input} />
+                            <input
+                                onChange={({ target }) =>
+                                    this.setState({ input: target.value })
+                                }
+                                value={input}
+                            />
                         </div>
                         <div className="dialog-buttons">
                             <div>
-                                <button onClick={() => window.emit("UIX_DIALOG_CB", { source, accept: true, input: input })}>Accept</button>
+                                <button
+                                    onClick={() =>
+                                        window.emit("UIX_DIALOG_CB", {
+                                            source,
+                                            accept: true,
+                                            input: input
+                                        })
+                                    }
+                                >
+                                    Accept
+                                </button>
                             </div>
                             <div>
-                                <button onClick={() => window.emit("UIX_DIALOG_CB", { source, accept: false, input: input })}>Dismiss</button>
+                                <button
+                                    onClick={() =>
+                                        window.emit("UIX_DIALOG_CB", {
+                                            source,
+                                            accept: false,
+                                            input: input
+                                        })
+                                    }
+                                >
+                                    Dismiss
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -40,15 +64,12 @@ export class Dialog extends Component {
             </CSSTransition>
         )
     }
-
 }
 
 const mapStateToProps = ({ top }) => ({
     dialog: top.rendered.dialog
 })
 
-const mapDispatchToProps = {
-
-}
+const mapDispatchToProps = {}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dialog)

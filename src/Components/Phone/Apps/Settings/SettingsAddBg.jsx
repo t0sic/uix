@@ -1,26 +1,28 @@
+import {
+    UIXPhoneSetDarkBackground, UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetPath, UIXPhoneSetCustomBackground,
+    UIXSetImages, UIXSetImage, UIXSetAddBackgroundInput
+} from "../../../../redux/actions/phoneActions";
+import { CSSTransition } from "react-transition-group";
 import { withTranslation } from "react-i18next";
 import React, { Component } from "react";
+import Loading from "../../Main/Loading";
 import KeyNav from "../../Main/KeyNav";
 import { connect } from "react-redux";
 import { v4 as uuid } from 'uuid';
 import "./settings.css";
-import {
-    UIXPhoneSetDarkBackground, UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetPath, UIXPhoneSetCustomBackground
-} from "../../../../redux/actions/phoneActions";
 
 export class SettingsAddBg extends Component {
 
     state = {
-        inputs: {
-            url: "",
-            lable: "",
-        },
-        validated: false
+        validated: false,
+        loader: false,
+        locked: false,
     }
+    
 
     render() {
-        const { settings, t } = this.props
-        const { inputs, validated } = this.state
+        const { inputs, settings, t } = this.props
+        const { validated, loader } = this.state
         const { url, label } = inputs
         const { darkMode } = settings
         const color_p = darkMode ? "rgb(28, 28, 30)" : "rgb(242, 242, 247)"
@@ -29,6 +31,15 @@ export class SettingsAddBg extends Component {
 
         return (
             <div className="app" style={{ background: color_p }}>
+                <CSSTransition
+                    timeout={500}
+                    classNames="default"
+                    unmountOnExit
+                    appear={true}
+                    in={loader}
+                >
+                    <Loading />
+                </CSSTransition>
                 <div className="settings" style={{ background: color_p }}>
 
                     <div className="settings-top" style={{ background: color_s }}>
@@ -49,8 +60,19 @@ export class SettingsAddBg extends Component {
                                 className="settings-add-background-nav-element"
                                 value={url}
                                 onChange={({ target }) => this.handleChange(target)}
-                                data-pos={[1, 0]} spellCheck={false}
+                                data-pos={[1, 0]} 
+                                spellCheck={false}
                                 style={{ backgroundColor: color_s, color: color_t }} />
+                            <div 
+                                className="settings-add-background-choose-from-camera-roll settings-add-background-nav-element"
+                                data-class="settings-add-background-choose-from-camera-roll-selected"
+                                data-pos={[2, 0]}
+                                data-func="chooseImage"
+                            >
+                                <span>{t("apps.phone.apps.settings-background-add.choose-from-camera-roll")}</span>
+                                <i className="fas fa-share"></i>
+                            </div>
+                            <br />
                             <label style={{ color: color_t }}>{t("apps.phone.apps.settings-background-add.input-label")}</label>
                             <input
                                 name="label"
@@ -59,12 +81,21 @@ export class SettingsAddBg extends Component {
                                 className="settings-add-background-nav-element"
                                 value={label}
                                 onChange={({ target }) => this.handleChange(target)}
-                                data-pos={[2, 0]}
+                                data-pos={[3, 0]}
                                 spellCheck={false}
                                 style={{ backgroundColor: color_s, color: color_t }} />
                         </div>
                         <div className="settings-middle-add-bg-button-container">
-                            <div data-func="add" className="settings-add-background-nav-element" style={{ opacity: validated ? "1" : "0.6" }} data-pos={[3, 0]} data-class="settings-middle-add-bg-button-selected" id="settings-bg-add-btn">{t("apps.phone.apps.settings-background-add.btn-label")}</div>
+                            <div 
+                                data-func="add" 
+                                className="settings-add-background-nav-element"
+                                style={{ opacity: validated ? "1" : "0.6" }} 
+                                data-pos={[4, 0]} 
+                                data-class="settings-middle-add-bg-button-selected" 
+                                id="settings-bg-add-btn"
+                            >
+                                {t("apps.phone.apps.settings-background-add.btn-label")}
+                            </div>
                         </div>
 
                     </div>
@@ -74,13 +105,33 @@ export class SettingsAddBg extends Component {
         )
     }
 
+    chooseImage = () => {
+        const { UIXSetImage, UIXSetImages, UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetPath, t } = this.props
+        let images = this.props.images
+        let image = {
+            quit: "images",
+            link: "",
+            action: {
+                icon: "fas fa-share",
+                action: "backgroundAdd",
+                label: t("apps.phone.apps.settings-background-add.image-choose-label"),
+            }
+        }
+        images.quit = "settings-background-add"
+        UIXSetImages(images)
+        UIXSetImage(image)
+        UIXPhoneSetAnitmation("slide-1")
+        UIXPhoneSetAnimationDuration(300)
+        UIXPhoneSetPath("images")
+    }
+
     handleChange = ({ name, value }) => {
-        let inputs = this.state.inputs
+        const { UIXSetAddBackgroundInput } = this.props
+        let inputs = this.props.inputs
         inputs[name] = value
-        this.setState({ inputs }, () => {
-            this.testImage(this.state.inputs.url, (res, state) => {
-                if (this.state.inputs.label && state === "success" && this.state.inputs.label.length > 0) this.setState({ validated: true })
-            })
+        UIXSetAddBackgroundInput(inputs)
+        this.testImage(this.props.inputs.url, (res, state) => {
+            if (this.props.inputs.label && state === "success" && this.props.inputs.label.length > 0) this.setState({ validated: true })
         })
     }
 
@@ -109,11 +160,12 @@ export class SettingsAddBg extends Component {
     }
 
     add = () => {
-        const { inputs, validated } = this.state
-        if (!validated) return
-        const { url, label } = inputs
-        const { settings, UIXPhoneSetCustomBackground, UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetPath } = this.props
+        const { validated, locked } = this.state
+        if (!validated && locked) return
+        const { settings, UIXPhoneSetCustomBackground, UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetPath, inputs } = this.props
+        this.setState({loader: true, locked: true})
         const customBackgrounds = settings.customBackgrounds
+        const { url, label } = inputs
         this.dark(url, (dark) => {
             const customBg = { id: uuid(), label, url, dark }
             customBackgrounds.push(customBg)
@@ -121,26 +173,31 @@ export class SettingsAddBg extends Component {
             UIXPhoneSetAnitmation("slide-2")
             UIXPhoneSetAnimationDuration(300)
             UIXPhoneSetPath("settings-background")
+            this.setState({loader: false, locked: false})
         })
     }
 
     dark = (url, cb) => {
 
         function toDataUrl(url, callback) {
-            var xhr = new XMLHttpRequest()
-            xhr.onload = function () {
-                var reader = new FileReader()
-                reader.onloadend = function () {
-                    callback(reader.result)
+            try {
+                let xhr = new XMLHttpRequest()
+                xhr.onload = function () {
+                    var reader = new FileReader()
+                    reader.onloadend = function () {
+                        callback(reader.result)
+                    }
+                    reader.readAsDataURL(xhr.response)
                 }
-                reader.readAsDataURL(xhr.response)
+                xhr.open("GET", url)
+                xhr.responseType = "blob"
+                xhr.send()     
+            } catch (error) {
+                this.setState({loader: false})
             }
-            xhr.open("GET", url)
-            xhr.responseType = "blob"
-            xhr.send()
         }
 
-        var proxyUrl = "https://cors-anywhere.herokuapp.com/",
+        let proxyUrl = "https://cors-anywhere.herokuapp.com/",
             targetUrl = url
         toDataUrl(proxyUrl + targetUrl, (data) => {
             this.getImageLightness(data, (lightness) => {
@@ -230,15 +287,21 @@ export class SettingsAddBg extends Component {
 }
 
 const mapStateToProps = ({ phone }) => ({
-    settings: phone.settings
+    inputs: phone.apps.settingAddBackgroundInputs,
+    settings: phone.settings,
+    images: phone.apps.images,
+    image: phone.apps.image,
 })
 
 const mapDispatchToProps = {
-    UIXPhoneSetDarkBackground,
-    UIXPhoneSetAnitmation,
     UIXPhoneSetAnimationDuration,
+    UIXPhoneSetCustomBackground,
+    UIXPhoneSetDarkBackground,
+    UIXSetAddBackgroundInput,
+    UIXPhoneSetAnitmation,
     UIXPhoneSetPath,
-    UIXPhoneSetCustomBackground
+    UIXSetImages,
+    UIXSetImage,
 }
 
 export default withTranslation()(connect(mapStateToProps, mapDispatchToProps)(SettingsAddBg))

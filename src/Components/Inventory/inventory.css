@@ -2,11 +2,14 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    backdrop-filter: blur(10px);
     background: rgba(0, 0, 0, 0.479);
-    font-family: 'Rubik';
+    font-family: "Rubik";
     z-index: 3;
     user-select: none;
+}
+
+.inventory *:focus {
+    outline: none;
 }
 
 .inventory-inner {
@@ -108,10 +111,10 @@
     text-transform: uppercase;
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .inventory-actions button:hover input:hover {
@@ -147,7 +150,8 @@ input[type=number]::-webkit-outer-spin-button {
 .inventory-item-image {
     height: 100%;
     width: 100%;
-    background: url("https://gamepedia.cursecdn.com/dayz_gamepedia/a/ac/Lockpick.png") no-repeat;
+    background: url("https://gamepedia.cursecdn.com/dayz_gamepedia/a/ac/Lockpick.png")
+        no-repeat;
     background-size: 50%;
     background-position: center;
     position: absolute;
@@ -180,11 +184,46 @@ input[type=number]::-webkit-outer-spin-button {
     height: 8.9%;
 }
 
+.inventory-popup {
+    position: absolute;
+    background: rgba(8, 8, 8, 0.884);
+    margin: 10%;
+    width: 15%;
+    min-height: 15%;
+    box-sizing: border-box;
+    z-index: 99;
+}
+
+.inventory-popup-top {
+    height: 5%;
+    padding: 15px;
+    background: rgba(62, 112, 139, 0.637);
+}
+
+.inventory-popup-item-name {
+    font-size: 130%;
+    text-transform: uppercase;
+    font-family: "Borda Regular 5";
+    letter-spacing: 0.4px;
+}
+
+.inventory-popup-item-type {
+    opacity: 0.6;
+}
+
+.inventory-popup-item-middle {
+    padding: 15px;
+}
+
+.inventory-popup-description {
+    opacity: 0.6;
+}
+
 ::-webkit-scrollbar {
     width: 2px;
     height: 2px;
-  }
-  
+}
+
 ::-webkit-scrollbar-button {
     width: 0px;
     height: 0px;

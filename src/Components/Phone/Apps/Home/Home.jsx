@@ -1,4 +1,4 @@
-import { UIXPhoneSetPath, UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetDarkBackground, UIXSetImages } from "../../../../redux/actions/phoneActions";
+import { UIXPhoneSetPath, UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetDarkBackground, UIXSetImages, UIXSetImage } from "../../../../redux/actions/phoneActions";
 import { withTranslation } from "react-i18next";
 import React, { Component } from "react";
 import KeyNav from "../../Main/KeyNav";
@@ -111,9 +111,19 @@ export class Home extends Component {
     }
 
     onImagesOpen = () => {
-        const images = this.props.images
-
+        const { UIXSetImage, UIXSetImages, t } = this.props
+        let images = this.props.images
+        let image = {
+            quit: "images",
+            link: "",
+            action: {
+                icon: "fas fa-trash",
+                action: "throwImage",
+                label: t("apps.phone.apps.images.throw"),
+            }
+        }
         images.quit = "home"
+        UIXSetImage(image)
         UIXSetImages(images)
     }
 
@@ -156,10 +166,12 @@ const mapStateToProps = ({ phone }) => ({
 })
 
 const mapDispatchToProps = {
-    UIXPhoneSetPath,
-    UIXPhoneSetAnitmation,
     UIXPhoneSetAnimationDuration,
-    UIXPhoneSetDarkBackground
+    UIXPhoneSetDarkBackground,
+    UIXPhoneSetAnitmation,
+    UIXPhoneSetPath,
+    UIXSetImages,
+    UIXSetImage
 }
 
 export default withTranslation()(connect(mapStateToProps, mapDispatchToProps)(Home))

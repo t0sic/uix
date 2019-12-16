@@ -114,7 +114,7 @@ export class SettingsBackground extends Component {
         const navigation = new KeyNav(elements, (event, data) => this[event](data))
 
         const item = window.localStorage.getItem("settings-background")
-        if (item) {
+        if (item && navigation.isPosition(JSON.parse(item))) {
             navigation.position.horizontal = JSON.parse(item)[1]
             navigation.position.vertical = JSON.parse(item)[0]
         }

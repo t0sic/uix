@@ -1,11 +1,18 @@
-import { UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetPath } from "../../../../redux/actions/phoneActions";
-import { CSSTransition } from "react-transition-group";
-import React, { Component } from "react";
-import KeyNav from "../../Main/KeyNav";
-import { connect } from "react-redux";
+import {
+    UIXPhoneSetAnitmation,
+    UIXPhoneSetAnimationDuration,
+    UIXPhoneSetPath,
+    UIXSetPhoneClasses,
+    UIXSetImages,
+    UIXSetAddBackgroundInput,
+    UIXSetTwitterInputs
+} from "../../../../redux/actions/phoneActions"
+import { CSSTransition } from "react-transition-group"
+import React, { Component } from "react"
+import KeyNav from "../../Main/KeyNav"
+import { connect } from "react-redux"
 
 export class Index extends Component {
-
     state = {
         actionBoxOpen: false,
         type: "portrait"
@@ -21,10 +28,13 @@ export class Index extends Component {
         const color_p = darkMode ? "rgb(28, 28, 30)" : "rgb(242, 242, 247)"
 
         return (
-            <div className="app" style={{color: color_t}}>
+            <div className="app" style={{ color: color_t }}>
                 <div className="image">
                     <div className="image-inner">
-                        <div className={`image-${type}`} style={{background: `url(${link})`}} />
+                        <div
+                            className={`image-${type}`}
+                            style={{ background: `url(${link})` }}
+                        />
                     </div>
                 </div>
                 {
@@ -35,38 +45,101 @@ export class Index extends Component {
                         appear={true}
                         unmountOnExit
                     >
-                        <div className="image-action" style={{background: color_p}}>
+                        <div
+                            className="image-action"
+                            style={{ background: color_p }}
+                        >
                             <div className="image-action-label">{label}</div>
                             <div className="image-action-icon">
                                 <i className={icon} />
                             </div>
-                        </div> 
+                        </div>
                     </CSSTransition>
                 }
             </div>
         )
     }
 
-    exited = () => { }
+    exited = () => {}
 
-    enter = () => { 
+    enter = () => {
         if (this.state.actionBoxOpen) {
-            console.log("Perform Action")
+            if (this[this.props.image.action.action])
+                this[this.props.image.action.action]()
         } else {
-            this.setState({actionBoxOpen: true})
+            this.setState({ actionBoxOpen: true })
         }
     }
 
+    throwImage = () => {
+        const { UIXSetImages, image } = this.props
+        const { link } = image
+        let images = this.props.images
+        images.images = images.images.filter(c => c.link !== link)
+
+        UIXSetImages(images)
+        this.quit()
+    }
+
+    twitterChooseImage = () => {
+        const {
+            UIXSetPhoneClasses,
+            UIXSetTwitterInputs,
+            UIXPhoneSetAnitmation,
+            UIXPhoneSetAnimationDuration,
+            UIXPhoneSetPath,
+            image
+        } = this.props
+        const { link } = image
+        let inputs = this.props.twitterInputs
+
+        inputs.createAccount.link = link
+
+        UIXSetTwitterInputs(inputs)
+        UIXPhoneSetAnimationDuration(300)
+        UIXPhoneSetAnitmation("slide-2")
+        UIXSetPhoneClasses("")
+        UIXPhoneSetPath("twitter-create-account")
+    }
+
+    backgroundAdd = () => {
+        const {
+            UIXSetPhoneClasses,
+            UIXSetAddBackgroundInput,
+            UIXPhoneSetAnitmation,
+            UIXPhoneSetAnimationDuration,
+            UIXPhoneSetPath,
+            image
+        } = this.props
+        const { link } = image
+        let inputs = this.props.inputs
+
+        inputs.url = link
+
+        UIXSetAddBackgroundInput(inputs)
+        UIXPhoneSetAnimationDuration(300)
+        UIXPhoneSetAnitmation("slide-2")
+        UIXSetPhoneClasses("")
+        UIXPhoneSetPath("settings-background-add")
+    }
+
     quit = () => {
-        const { UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetPath, image } = this.props
+        const {
+            UIXPhoneSetAnitmation,
+            UIXPhoneSetAnimationDuration,
+            UIXPhoneSetPath,
+            image,
+            UIXSetPhoneClasses
+        } = this.props
         UIXPhoneSetAnitmation("default")
         UIXPhoneSetAnimationDuration(200)
+        UIXSetPhoneClasses("")
         UIXPhoneSetPath(image.quit)
     }
 
     backspace = () => {
         if (this.state.actionBoxOpen) {
-            this.setState({actionBoxOpen: false})
+            this.setState({ actionBoxOpen: false })
         } else {
             this.quit()
         }
@@ -78,17 +151,17 @@ export class Index extends Component {
         this[detail.action]()
     }
 
-    componentDidMount() { 
-        window.addEventListener("phone", this.handleEvent) 
-        const { image } = this.props
+    componentDidMount() {
+        window.addEventListener("phone", this.handleEvent)
+        const { image, UIXSetPhoneClasses } = this.props
         const { link } = image
 
         let img = new Image()
         img.onload = () => {
             const imageIsLandscape = img.width > img.height
             const cameraType = imageIsLandscape ? "landscape" : "portrait"
+            UIXSetPhoneClasses("phone-" + cameraType)
             this.setState({ type: cameraType })
-            console.log(cameraType)
         }
         img.src = link
     }
@@ -97,19 +170,24 @@ export class Index extends Component {
         const navigation = new KeyNav([], (event, data) => this[event](data))
         this.props.setKeyNav(navigation)
     }
-
-
 }
 
-const mapStateToProps = ({phone}) => ({
+const mapStateToProps = ({ phone }) => ({
+    inputs: phone.apps.settingAddBackgroundInputs,
+    images: phone.apps.images,
+    settings: phone.settings,
     image: phone.apps.image,
-    settings: phone.settings
+    twitterInputs: phone.apps.twitterInputs
 })
 
 const mapDispatchToProps = {
-    UIXPhoneSetAnimationDuration, 
-    UIXPhoneSetAnitmation, 
-    UIXPhoneSetPath
+    UIXPhoneSetAnimationDuration,
+    UIXSetAddBackgroundInput,
+    UIXPhoneSetAnitmation,
+    UIXSetTwitterInputs,
+    UIXSetPhoneClasses,
+    UIXPhoneSetPath,
+    UIXSetImages
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Index)

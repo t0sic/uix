@@ -1,4 +1,4 @@
-import { UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetPath, UIXPhoneSetDarkBackground } from "../../../../redux/actions/phoneActions";
+import { UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetPath, UIXPhoneSetDarkBackground, UIXSetImage } from "../../../../redux/actions/phoneActions";
 import { withTranslation } from "react-i18next";
 import React, { Component } from "react";
 import KeyNav from "../../Main/KeyNav";
@@ -100,7 +100,7 @@ export class Images extends Component {
                 y++
             }
 
-            output.push(<div key={i} data-pos={[y, x]} className="images-image" data-class="images-image-selected" style={{background: `url(${link})`}} />)
+            output.push(<div key={i} data-pos={[y, x]} data-link={link} className="images-image" data-class="images-image-selected" style={{background: `url(${link})`}} />)
             x++
             counter++
         })
@@ -108,7 +108,19 @@ export class Images extends Component {
         return output
     }
 
-    enter = ({ dataset }) => { }
+    enter = ({ dataset }) => { 
+        const { UIXSetImage, UIXPhoneSetAnitmation, UIXPhoneSetAnimationDuration, UIXPhoneSetPath } = this.props
+        let image = this.props.image
+
+        image.quit = "images"
+        image.link = dataset.link
+
+        UIXSetImage(image)
+        UIXPhoneSetAnitmation("slide-left")
+        UIXPhoneSetAnimationDuration(200)
+        UIXPhoneSetPath("image")
+    }
+
     exited = () => { }
 
     focus = (element) => { 
@@ -149,15 +161,17 @@ export class Images extends Component {
 }
 
 const mapStateToProps = ({ phone }) => ({
+    images: phone.apps.images,
     settings: phone.settings,
-    images: phone.apps.images
+    image: phone.apps.image
 })
 
 const mapDispatchToProps = {
     UIXPhoneSetAnimationDuration,
     UIXPhoneSetDarkBackground, 
     UIXPhoneSetAnitmation, 
-    UIXPhoneSetPath
+    UIXPhoneSetPath,
+    UIXSetImage,
 }
 
 export default withTranslation()(connect(mapStateToProps, mapDispatchToProps)(Images))

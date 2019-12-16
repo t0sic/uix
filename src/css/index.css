@@ -10,23 +10,25 @@
     font-family: "Borda Regular 5";
     font-style: normal;
     font-weight: normal;
-    src: local("Borda Regular 5"), url("../fonts/Borda-Bold.woff") format("woff");
+    src: local("Borda Regular 5"),
+        url("../fonts/Borda-Bold.woff") format("woff");
 }
 
 @font-face {
     font-family: "Borda Regular 3";
     font-style: normal;
     font-weight: normal;
-    src: local("Borda Regular 3"), url("../fonts/Borda-DemiBold.woff") format("woff");
+    src: local("Borda Regular 3"),
+        url("../fonts/Borda-DemiBold.woff") format("woff");
 }
 
 @font-face {
     font-family: "Borda Regular 11";
     font-style: normal;
     font-weight: normal;
-    src: local("Borda Regular 11"), url("../fonts/Borda-Italic.woff") format("woff");
+    src: local("Borda Regular 11"),
+        url("../fonts/Borda-Italic.woff") format("woff");
 }
-
 
 @font-face {
     font-family: "Borda Regular";
@@ -35,14 +37,13 @@
     src: local("Borda Regular"), url("../fonts/Borda-Light.woff") format("woff");
 }
 
-
 @font-face {
     font-family: "Borda Regular 12";
     font-style: normal;
     font-weight: normal;
-    src: local("Borda Regular 12"), url("../fonts/Borda-Medium.woff") format("woff");
+    src: local("Borda Regular 12"),
+        url("../fonts/Borda-Medium.woff") format("woff");
 }
-
 
 @font-face {
     font-family: "Borda Regular 9";
@@ -62,15 +63,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
+}
 
 body {
     padding: 0;
     margin: 0;
     font-family: "Hacked", sans-serif;
-    /* background: url("https://cdn.discordapp.com/attachments/614462914375581741/624594894911963146/15.53.53-09.08.19.jpg") no-repeat; */
+    background: url("https://cdn.discordapp.com/attachments/614462914375581741/624594894911963146/15.53.53-09.08.19.jpg")
+        no-repeat;
     background-size: cover;
-    color: #FFF;
+    color: #fff;
     overflow: hidden;
 }
 
@@ -108,7 +110,7 @@ body {
 }
 
 .btn-main:hover {
-    background: #FFF;
+    background: #fff;
     transition: 400ms;
     color: var(--main-color-dark);
 }

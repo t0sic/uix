@@ -6,7 +6,8 @@
 }
 
 .uix-notification {
+    box-sizing: border-box;
     background: rgba(0, 0, 0, 0.671);
-    font-family: 'Rubik';
+    font-family: "Rubik";
     padding: 20px;
 }

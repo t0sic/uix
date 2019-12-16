@@ -38,7 +38,7 @@
                     "wifi-label": "Wi-Fi",
                     "mobile-data-label": "Mobile Data",
                     "dark-mode-label": "Dark Mode",
-                    "disturbe-mode-label": "Do Not Disturbe",
+                    "disturb-mode-label": "Do Not Disturb",
                     "phone-label": "Phone",
                     "themes-label": "Themes",
                     "backgrounds-label": "Backgrounds"
@@ -59,7 +59,9 @@
                     "label": "Add Background",
                     "input-url": "A url pointing to the image",
                     "input-label": "Label",
-                    "btn-label": "Add Background"
+                    "btn-label": "Add Background",
+                    "choose-from-camera-roll": "Choose from cameraroll",
+                    "image-choose-label": "Choose"
                 },
                 "settings-call": {
                     "label": "Phone",
@@ -109,7 +111,26 @@
                     "label": "Messages"
                 },
                 "images": {
-                    "label": "Images"
+                    "label": "Images",
+                    "throw": "Delete"
+                },
+                "camera": {
+                    "slow-mo": "SLOW-MO",
+                    "landscape": "LANDSCAPE",
+                    "photo": "PHOTO",
+                    "portrait": "PORTRAIT",
+                    "square": "SQUARE"
+                },
+                "twitter-welcome": {
+                    "welcome-text": "See what's happening in the world right now.",
+                    "create-account-btn": "Create Account"
+                },
+                "twitter-create-account": {
+                    "create-account-text": "Create your account",
+                    "name-input": "Name",
+                    "link-input": "Image link",
+                    "choose-from-camera-roll": "Choose from cameraroll",
+                    "sign-up-btn": "Sign up"
                 }
             }
         },

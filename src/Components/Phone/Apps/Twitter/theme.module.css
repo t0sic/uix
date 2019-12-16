@@ -1,0 +1,86 @@
+.mention {
+    color: var(--twitter-primary);
+    text-decoration: none;
+}
+
+.mentionSuggestions {
+    position: absolute;
+    border-top: 1px solid var(--twitter-secondary-extra-light-gray);
+    background: white;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    transform-origin: 50% 0%;
+    transform: scaleY(0);
+    width: 100%;
+    margin-top: 34%;
+}
+
+.mentionSuggestionsEntryContainer {
+    width: 80%;
+    font-size: 70%;
+}
+
+.mentionSuggestionsEntryContainerLeft,
+.mentionSuggestionsEntryContainerRight {
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 10px;
+}
+
+.mentionSuggestionsEntryContainerRight {
+    width: 100%;
+    padding-left: 8px;
+}
+
+.mentionSuggestionsEntry {
+    padding: 5px 7px 5px 0px;
+    border-bottom: 1px solid var(--twitter-secondary-extra-light-gray);
+    transition: background-color 0.4s cubic-bezier(0.27, 1.27, 0.48, 0.56);
+}
+
+.mentionSuggestionsEntry:active {
+    background-color: #cce7ff;
+}
+
+.mentionSuggestionsEntryFocused {
+    border-bottom: 1px solid var(--twitter-secondary-extra-light-gray);
+    padding: 5px 7px 5px 0px;
+    background-color: #e6f3ff;
+}
+
+.mentionSuggestionsEntry:last-child {
+    border: none;
+}
+
+.mentionSuggestionsEntryText,
+.mentionSuggestionsEntryTitle {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 90%;
+}
+
+.mentionSuggestionsEntryTitle {
+    font-size: 50%;
+    color: black;
+}
+
+.mentionSuggestionsEntryAvatar {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.mentionTag {
+    font-family: "Helvetica Neue Light";
+    font-size: 80%;
+    color: rgb(101, 119, 134);
+}
+
+.hashtag {
+    color: var(--twitter-primary);
+    font-family: "Helvetica Neue Bold";
+}

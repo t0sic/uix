@@ -68,3 +68,26 @@
     transform: translateX(100%);
     opacity: 0;
 }
+
+.scale-enter {
+    transform: scale(0);
+    opacity: 0;
+}
+
+.scale-enter.scale-enter-active {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+    transition: 200ms;
+}
+
+.scale-exit {
+    transform: scale(1);
+}
+.scale-exit.scale-exit-active {
+    transform: scale(0);
+    transition: 200ms linear;
+}
+.scale-exit-done {
+    transform: scale(0);
+    opacity: 0;
+}

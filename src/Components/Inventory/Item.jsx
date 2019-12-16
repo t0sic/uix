@@ -1,50 +1,52 @@
-import React, { Component } from "react";
-import $ from "jquery";
-import "jquery-ui-bundle";
-import "jquery-ui-bundle/jquery-ui.css";
+import React, { Component } from "react"
+import $ from "jquery"
+import "jquery-ui-bundle"
+import "jquery-ui-bundle/jquery-ui.css"
 
 class Item extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {}
-    }
-
     render() {
-
-        const { item, action } = this.props
+        const {
+            item,
+            action,
+            onItemHover,
+            onMouseMove,
+            onItemLeaveHover
+        } = this.props
 
         return (
-            <div className="inventory-item" data-item={JSON.stringify({ item, action })}>
+            <div
+                onMouseEnter={() => onItemHover(item)}
+                onMouseLeave={onItemLeaveHover}
+                onMouseMove={onMouseMove}
+                className="inventory-item"
+                data-item={JSON.stringify({ item, action })}
+            >
                 <div className="inventory-item-image" />
                 <div className="inventory-item-info">
                     <span>{item.count}x</span>
                     <span>{item.weight}</span>
                 </div>
             </div>
-        );
+        )
     }
 
     componentDidMount() {
-
-        $('.inventory-item').draggable({
+        $(".inventory-item").draggable({
             revert: true,
             revertDuration: 0,
             scroll: false,
             helper: "clone",
             appendTo: $(".inventory"),
 
-            start: function (event, ui) {
+            start: function(event, ui) {
                 $(this).hide()
             },
 
-            stop: function (event, ui) {
+            stop: function(event, ui) {
                 $(this).show()
             }
-
         })
-
     }
-
 }
 
-export default Item;
+export default Item

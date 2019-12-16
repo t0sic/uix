@@ -16,7 +16,7 @@ class Phone extends Component {
         const { url } = background
 
         return (
-            <div className="phone-overlay">
+            <div className={`phone-overlay ${classes}`}>
                 <div className="phone">
                     <div className="phone-screen">
                         <div

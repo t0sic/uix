@@ -16,7 +16,7 @@ export class SettingsBackground extends Component {
         const color_s = darkMode ? "rgb(44, 44, 46)" : "rgb(229, 229, 234)"
         const color_t = darkMode ? "white" : "black"
         const themes = [
-            { label: "Default", id: 1, type: t("apps.phone.apps.settings-themes.default-label") },
+            { label: t("apps.phone.apps.settings-themes.default-label"), id: 1, type: "default" },
             { label: t("apps.phone.apps.settings-themes.gray-label"), type: "custom", id: 2, style: { backgroundImage: "linear-gradient(to left bottom, #181818, #181818, #181818, #3a3a3a, #464646)", color: "white" } }
         ]
 
